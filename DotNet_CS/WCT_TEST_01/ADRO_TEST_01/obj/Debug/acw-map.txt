@@ -1,0 +1,4 @@
+ADRO_TEST_01.MainActivity, ADRO_TEST_01;md57f96a595805d2be4d8c74a6df9d2baf2.MainActivity
+ADRO_TEST_01.MainActivity, ADRO_TEST_01, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md57f96a595805d2be4d8c74a6df9d2baf2.MainActivity
+ADRO_TEST_01.MainActivity;md57f96a595805d2be4d8c74a6df9d2baf2.MainActivity
+adro_test_01.MainActivity;md57f96a595805d2be4d8c74a6df9d2baf2.MainActivity

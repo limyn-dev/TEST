@@ -1,0 +1,8 @@
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PSUI\PSUI\bin\Debug\PSUI.exe
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PSUI\PSUI\bin\Debug\PSUI.pdb
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PSUI\PSUI\obj\x86\Debug\PSUI.Properties.Resources.resources
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PSUI\PSUI\obj\x86\Debug\PSUI.csproj.GenerateResource.Cache
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PSUI\PSUI\obj\x86\Debug\PSUI.exe
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PSUI\PSUI\obj\x86\Debug\PSUI.pdb
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PSUI\PSUI\obj\x86\Debug\PSUI.Form1.resources
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\obj\x86\Debug\PSUI.csprojResolveAssemblyReference.cache

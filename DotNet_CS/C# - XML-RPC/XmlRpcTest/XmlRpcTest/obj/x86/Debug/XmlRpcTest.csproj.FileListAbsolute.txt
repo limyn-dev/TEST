@@ -1,0 +1,9 @@
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Debug\XmlRpcTest.frmMain.resources
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Debug\XmlRpcTest.Properties.Resources.resources
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Debug\XmlRpcTest.csproj.GenerateResource.Cache
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\bin\Debug\XmlRpcTest.exe
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\bin\Debug\XmlRpcTest.pdb
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Debug\XmlRpcTest.exe
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Debug\XmlRpcTest.pdb
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\C# - XML-RPC\XmlRpcTest\XmlRpcTest\obj\x86\Debug\XmlRpcTest.exe
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\C# - XML-RPC\XmlRpcTest\XmlRpcTest\obj\x86\Debug\XmlRpcTest.pdb

@@ -1,0 +1,6 @@
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\WCT_TEST_01\bin\Debug\WCT_TEST_01.dll.config
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\WCT_TEST_01\bin\Debug\WCT_TEST_01.dll
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\WCT_TEST_01\bin\Debug\WCT_TEST_01.pdb
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\WCT_TEST_01\obj\Debug\WCT_TEST_01.csprojResolveAssemblyReference.cache
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\WCT_TEST_01\obj\Debug\WCT_TEST_01.dll
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\WCT_TEST_01\obj\Debug\WCT_TEST_01.pdb

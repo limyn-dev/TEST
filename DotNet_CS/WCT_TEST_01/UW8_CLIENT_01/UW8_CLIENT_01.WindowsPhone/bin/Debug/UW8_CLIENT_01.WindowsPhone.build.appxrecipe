@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>VM1YDWX01</Machine>
+    <WindowsUser>limyn</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows Phone 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>17c9a488-a589-4347-8188-ed61af1930e2</PackageIdentityName>
+    <PackageIdentityPublisher>CN=limyn</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\obj\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType></RemoteDeploymentType>
+    <PackageRegistrationPath></PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\bin\Debug\UW8_CLIENT_01.WindowsPhone.exe">
+      <PackagePath>UW8_CLIENT_01.WindowsPhone.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\bin\Debug\UW8_CLIENT_01.WindowsPhone.xr.xml">
+      <PackagePath>UW8_CLIENT_01.WindowsPhone.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\UW8_CLIENT_01\UW8_CLIENT_01.WindowsPhone\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,8 @@
+C:\_GIT\CS\SBS\obj\Debug\SBS.csprojResolveAssemblyReference.cache
+C:\_GIT\CS\SBS\obj\Debug\SBS.MainForm.resources
+C:\_GIT\CS\SBS\obj\Debug\SBS.csproj.GenerateResource.Cache
+C:\_GIT\CS\SBS\bin\Debug\SBS.exe.config
+C:\_GIT\CS\SBS\bin\Debug\SBS.exe
+C:\_GIT\CS\SBS\bin\Debug\SBS.pdb
+C:\_GIT\CS\SBS\obj\Debug\SBS.exe
+C:\_GIT\CS\SBS\obj\Debug\SBS.pdb

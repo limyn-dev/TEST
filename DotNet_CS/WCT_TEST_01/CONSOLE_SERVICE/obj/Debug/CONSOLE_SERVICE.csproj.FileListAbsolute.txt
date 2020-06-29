@@ -1,0 +1,8 @@
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\bin\Debug\CONSOLE_SERVICE.exe.config
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\bin\Debug\CONSOLE_SERVICE.exe
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\bin\Debug\CONSOLE_SERVICE.pdb
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\bin\Debug\WCT_TEST_01.dll
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\bin\Debug\WCT_TEST_01.pdb
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\obj\Debug\CONSOLE_SERVICE.csprojResolveAssemblyReference.cache
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\obj\Debug\CONSOLE_SERVICE.exe
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\CONSOLE_SERVICE\obj\Debug\CONSOLE_SERVICE.pdb

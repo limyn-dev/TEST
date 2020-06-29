@@ -1,0 +1,15 @@
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\bin\Debug\ADRO_TEST_01.dll
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\bin\Debug\ADRO_TEST_01.pdb
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\bin\Debug\ADRO_TEST_01.ADRO_TEST_01.apk
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\bin\Debug\ADRO_TEST_01.ADRO_TEST_01-Signed.apk
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\ADRO_TEST_01.csprojResolveAssemblyReference.cache
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\ADRO_TEST_01.dll
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\ADRO_TEST_01.pdb
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\android\bin\ADRO_TEST_01.ADRO_TEST_01.apk
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\res\layout\main.xml
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\res\values\strings.xml
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\res\drawable\icon.png
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\R.cs.flag
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\uploadflags.txt
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\obj\Debug\ADRO_TEST_01.dll.mdb
+C:\Users\limyn\OneDrive\Documents\PROJ_INFO_C#\WCT_TEST_01\ADRO_TEST_01\bin\Debug\ADRO_TEST_01.dll.mdb

@@ -1,0 +1,7 @@
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\bin\Release\XmlRpcTest.exe
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\bin\Release\XmlRpcTest.pdb
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Release\XmlRpcTest.frmMain.resources
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Release\XmlRpcTest.Properties.Resources.resources
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Release\XmlRpcTest.csproj.GenerateResource.Cache
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Release\XmlRpcTest.exe
+C:\Users\user1\AppData\Local\Temporary Projects\XmlRpcTest\obj\x86\Release\XmlRpcTest.pdb

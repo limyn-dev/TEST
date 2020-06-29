@@ -1,0 +1,8 @@
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\bin\Release\PSUI.exe
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\bin\Release\PSUI.pdb
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\obj\x86\Release\PSUI.csprojResolveAssemblyReference.cache
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\obj\x86\Release\PSUI.Form1.resources
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\obj\x86\Release\PSUI.Properties.Resources.resources
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\obj\x86\Release\PSUI.csproj.GenerateResource.Cache
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\obj\x86\Release\PSUI.exe
+C:\Users\user1\Desktop\SkyDrive\Documents\Projets\C#_PsUi\PSUI\obj\x86\Release\PSUI.pdb
