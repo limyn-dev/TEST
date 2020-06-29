@@ -1,0 +1,1 @@
+javah -verbose -classpath D:\Esis\Java\Exemples\tstJni\classes\tstjni -d D:\Esis\Java\Exemples\tstJni\src_c CNative

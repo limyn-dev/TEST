@@ -1,0 +1,14 @@
+! ** JCreator Workspace File (C)2000
+! ********** DO NOT EDIT *********
+
+VERSION := "1.00"
+LABEL := "NbC"
+
+! Start Project Structure
+#[BeginProject]SOURCE := "test\\test.jcp" #[EndProject]
+#[BeginProject]SOURCE := "NbC.jcp" #[EndProject]
+
+! Start Last Document Structure
+
+! Start Last Document Structure
+

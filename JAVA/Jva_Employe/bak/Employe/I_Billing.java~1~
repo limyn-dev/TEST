@@ -1,0 +1,19 @@
+package Employe;
+
+/*======================================================================================================================
+   Déscription:
+      Intérface qui définit les méthodes qui se rapport à un élément facturable
+======================================================================================================================*/
+public interface I_Billing
+   {
+
+   // Nom du client
+   public void    setClientName(String name) ;
+   public String  getClientName() ;
+
+   // Nombre d'heures de travail
+   public void setHoursWork(int hour) ;
+   public int  getHoursWork() ;
+
+
+   }

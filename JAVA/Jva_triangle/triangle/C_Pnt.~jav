@@ -1,0 +1,35 @@
+package triangle;
+
+import java.lang.* ;
+//import java.io.* ;
+
+public class C_Pnt
+  {
+
+  // Membres
+  private int x ;
+  private int y ;
+
+  // Accesseurs
+  public void setPnt(int x, int y)  { this.x = x; this.y = y;               }
+  public int getX()                 { return this.x;                        }
+  public int getY()                 { return this.y;                        }
+
+  // Constructeurs
+  public C_Pnt()                    { this.setPnt(0, 0);                    }
+  public C_Pnt(int x, int y)        { this.setPnt(x, y);                    }
+  public C_Pnt(C_Pnt pnt)           { this.setPnt(pnt.getX(), pnt.getY());  }
+
+  // Convertion
+  public String toString()          { return "{" + this.x + " ; " + this.y + "}" ; }
+
+  // Main
+  public static void main(String[] args)
+    {
+    C_Pnt pnt = new C_Pnt(3, 5) ;
+
+    System.out.println (pnt.toString()) ;
+
+    }
+
+  }

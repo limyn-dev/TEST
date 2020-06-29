@@ -1,0 +1,59 @@
+package ficini;
+
+
+
+import java.io.* ;
+
+
+
+/**
+ * Title:        Lecture des fichiers INI
+ * Description:
+ * Copyright:    Copyright (c) 2000
+ * Company:      _
+ * @author Yves Delay
+ * @version 1.0
+ */
+
+public class CMain
+  {
+
+  public CMain()    {}
+
+  public static void main(String[] args)
+    {
+
+    // Extraction des fichier du répértoire
+    File lstFic[] = new File("c:/WINDOWS/Favoris").listFiles() ;
+
+    // Parcourt des fchier du répetoire
+    for (int f=0; f<lstFic.length; f++)
+      {
+      String nom = lstFic[f].getName() ;
+      String ext = nom.substring(nom.lastIndexOf(".")+1) ;
+      if (ext.length() == lstFic[f].length()) ext="" ;
+
+      if (!lstFic[f].isDirectory())
+	if(ext.compareTo("url")==0 || ext.compareTo("URL")==0)
+	  {
+
+          // Affichage du nom du fichier
+	  System.out.println() ;
+	  System.out.println("--- " + lstFic[f].getAbsolutePath() + " ------------------------") ;
+
+	  // Affichage des valeurs du fichier ini
+	  CFicIni myFicIni = new CFicIni(lstFic[f]) ;
+	  for (int d=0; d<myFicIni.getDataCount(); d++)
+	    {
+	    CData dta = myFicIni.getDataList()[d]  ;
+	    System.out.print("Section: " + dta.getSection()) ;
+	    System.out.print("\t Nom: " + dta.getNom()) ;
+	    System.out.println("\tValeur: " + dta.getValeur()) ;
+	    }
+	  }
+
+      } // Fin du parcourt des fichiers
+
+    } // Fin du main
+
+  } // Fin de CMain

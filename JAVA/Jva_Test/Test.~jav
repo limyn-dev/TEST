@@ -1,0 +1,28 @@
+package Test;
+
+import Console.Cso ;
+
+public class Test
+   {
+
+   public static void main(String[] args)
+      {
+      String str ;
+      int    nbrInt=0 ;
+      float  nbrFloat=0 ;
+      double nbrDouble=0 ;
+
+      // Saisie des valeurs
+      Cso.Write ("Chaine de caractère: "); str=Cso.InStr() ;
+      Cso.Write ("Nombre entier      : "); str=Cso.InStr() ;
+      Cso.Write ("Flotant            : "); str=Cso.InStr() ;
+      Cso.Write ("Flotant double     : "); str=Cso.InStr() ;
+
+      // Affichage des valeurs
+      Cso.Write ("Chaine saisie               : "+str);        Cso.NxtLne();
+      Cso.Write ("Nombre entier saisit        : "+nbrInt);     Cso.NxtLne();
+      Cso.Write ("Nombre flotant saisit       : "+nbrFloat);   Cso.NxtLne();
+      Cso.Write ("Nombre flotant double saisit: "+nbrDouble);  Cso.NxtLne();
+      }
+
+   }

@@ -1,0 +1,113 @@
+package tststr;
+
+import java.io.DataInputStream ;
+import java.io.PrintStream ;
+
+public class clsTstStr
+  {
+
+  /*---------------------------------------------------------------------------
+    Données membres
+  ===========================================================================*/
+  private String Str ;
+  private char CarDeb ;
+  private char CarFin ;
+
+  /*---------------------------------------------------------------------------
+    Setter, Getter
+  ===========================================================================*/
+  public void setStr(String str)     { Str = str ; }
+  public void setCarDeb(char carDeb) { CarDeb = carDeb ; }
+  public void setCarFin(char carFin) { CarFin = carFin ; }
+  //---------------------------------------------------------------------------
+  public String getStr()      { return Str ;    }
+  public char   getCarDeb()   { return CarDeb ; }
+  public char   getCarFin()   { return CarFin ; }
+
+  /*---------------------------------------------------------------------------
+    Constructeurs
+  ===========================================================================*/
+  public clsTstStr()
+    {
+    this.setStr("<Indefinis>") ;
+    this.setCarDeb('<') ;
+    this.setCarFin('>') ;
+    }
+  //---------------------------------------------------------------------------
+  public clsTstStr(String str, char carDeb, char carFin)
+    {
+    this.setStr(str) ;
+    this.setCarDeb(carDeb) ;
+    this.setCarFin(carFin) ;
+    }
+  //---------------------------------------------------------------------------
+  public clsTstStr(clsTstStr e)
+    {
+    this.setStr(e.getStr()) ;
+    this.setCarDeb(e.getCarDeb()) ;
+    this.setCarFin(e.getCarFin()) ;
+    }
+
+  /*---------------------------------------------------------------------------
+    Extration d'une sous chaine délimitée
+  ===========================================================================*/
+  public String ChainDel()
+    {
+    String ret ;
+    int posDeb = Str.indexOf(CarDeb) ;
+    int posFin = Str.lastIndexOf(CarFin) ;
+
+    if (posDeb>posFin)
+      ret = null ;
+    else if (posDeb==-1)
+      ret = null ;
+    else if (posFin==-1)
+      ret = null ;
+    else
+      ret = Str.substring(posDeb, posFin+1) ;
+
+    return ret ;
+    }
+
+  /*---------------------------------------------------------------------------
+    Main
+  ===========================================================================*/
+  public static void main(String[] args)
+    {
+
+    // Stream
+    DataInputStream cin = new DataInputStream(System.in) ;
+    PrintStream cout = System.out ;
+
+    // Classe de test des string
+    clsTstStr tstStr = new clsTstStr() ;
+
+    try
+      {
+
+      // Saisie de la chaine et des délimiteurs
+      cout.flush() ;
+      cout.print("Chaine: ") ;
+      tstStr.setStr(cin.readLine()) ;
+      cout.print("Premier délimiteur: ") ;
+      tstStr.setCarDeb(cin.readLine().charAt(0)) ;
+      cout.print("Dernier délimiteur: ") ;
+      tstStr.setCarFin(cin.readLine().charAt(0)) ;
+
+      // Affichage de la saisie
+      cout.println( "Chaine            : "+tstStr.getStr() )  ;
+      cout.println( "Caractère de début: "+tstStr.getCarDeb() )  ;
+      cout.println( "Caractère de fin  : "+tstStr.getCarFin() )  ;
+
+      // Affichage de l'extraction de la chaine
+      String str = tstStr.ChainDel() ;
+      cout.print( "Chaine extraites: " + str ) ;
+
+      }
+    catch(IOException e)
+      {
+      }
+
+    }
+
+}

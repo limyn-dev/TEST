@@ -1,0 +1,17 @@
+build.menu.1[0]=com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make
+build.menu.2[0]=com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;rebuild
+content.layout.xml.[0]=<?xml version="1.0" encoding="UTF-8"?>`r`n<project-layout>`r`n  <tab_container selected_index="4">`r`n    <tab node_name="src/Tic/CBtn.java"/>`r`n    <tab node_name="src/Tic/CJeux.java"/>`r`n    <tab node_name="src/Tic/CPlr.java"/>`r`n    <tab node_name="src/Tic/CTic_.java"/>`r`n    <tab node_name="src/Tic/CTic.java"/>`r`n  </tab_container>`r`n</project-layout>`r`n
+debug.NoTracingClasses.1[0]=16 java.lang.Object1  1 -1
+debug.NoTracingClasses.2[0]=21 java.lang.ClassLoader1  1 -1
+debug.NoTracingClasses.3[0]=16 java.lang.String1  1 -1
+debug.SplitThreadsAndDataView[0]=0
+history.files.active[0]=src/Tic/CTic.java
+history.files.open.1[0]=src/Tic/CBtn.java,F;26,1790
+history.files.open.2[0]=src/Tic/CJeux.java,F;25,1917
+history.files.open.3[0]=src/Tic/CPlr.java,F;1,0
+history.files.open.4[0]=src/Tic/CTic_.java,F;74,560
+history.files.open.5[0]=src/Tic/CTic.java,F;24,2382
+sys.Author[0]=Yves Delay
+sys.ReopenHistory.1[0]=classes/CTic.html
+sys.ReopenHistory.2[0]=tstApplet.html
+sys.ReopenHistory.3[0]=C%|/JBuilderX/samples/samples.html

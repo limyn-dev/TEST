@@ -1,0 +1,4 @@
+package Employe;
+
+public class CTechnician extends C_Enploye {
+}

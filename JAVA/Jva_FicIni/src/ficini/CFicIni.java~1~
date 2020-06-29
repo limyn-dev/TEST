@@ -1,0 +1,131 @@
+package ficini;
+
+
+
+import java.io.* ;
+
+
+
+/**
+ * Title:        Lecture des fichiers INI
+ * Description:
+ * Copyright:    Copyright (c) 2000
+ * Company:      _
+ * @author Yves Delay
+ * @version 1.0
+ */
+
+public class CFicIni
+  {
+
+  //---- Membres --------------------------------------------------------------
+  CData  myLstDta[] ;
+  int    myNbrDta ;
+
+  //---- Constructeur ---------------------------------------------------------
+  public CFicIni(File fichier)  { myInit(); myReadFic(fichier); }
+
+  //---- Accesseur ------------------------------------------------------------
+  public CData getDataItem(int item) { return myGetData(item) ;  }
+  public int   getDataCount()        { return myNbrDta ;           }
+
+
+
+  /***************************************************************************/
+
+
+
+  //---- Initialisation -------------------------------------------------------
+  private void myInit()
+    {
+
+    // Initialisation des membres
+    myLstDta = null ;
+    myNbrDta = 0 ;
+
+    }
+
+  //---- Lecture du fichier ---------------------------------------------------
+  private void myReadFic(File fic)
+    {
+    BufferedReader bufFic  = null ;
+    String         lne     = "" ;
+    String         section = "" ;
+    boolean        openOk  = true ;
+    boolean        readOk  = true ;
+
+    // Ouverture du fichier
+    try
+      { bufFic = new BufferedReader(new FileReader(fic)) ; }
+    catch (FileNotFoundException e)
+      { openOk = false ;  }
+    catch (Exception e)
+      { openOk = false;   }
+
+    // Lecture des lignes du fichier
+    if (openOk)
+      while(readOk)
+        {
+
+	// Lecture de la ligne du fichier ini
+	try
+	  { lne=bufFic.readLine() ; }
+	catch (StringIndexOutOfBoundsException e)
+	  { lne = "ligne=Erreur de chaine de caractère" ; }
+	catch (Exception e)
+	  { lne = null ;}
+
+	// Traitement de la ligne
+	if (lne != null && lne.length()>0)
+	  {
+
+	  // Mise en forme de la ligne
+          lne = lne.trim() ;
+
+          // Mise à jour de la section
+          if (lne.charAt(0)== '[')
+	    section = lne.substring(1, lne.length()-1) ;
+
+          // Ajout de la donnée à la liste
+          else
+	    addDta(section, lne) ;
+
+	  } // Fin du traitement de la ligne
+
+	else
+	  readOk = false ;
+
+        } // Fin du parcourt des lignes di fichier
+
+    } // Fin de myReadFic
+
+  //---- Ajout d'une donnée à la liste ----------------------------------------
+  private void addDta(String section, String lneIni)
+    {
+
+    // Création de la nouvelle liste des données
+    CData newLstDta[] = new CData[myNbrDta+1] ;
+
+    //copies des données existantes
+    for (int d=0; d<myNbrDta; d++)
+      newLstDta[d] = myLstDta[d] ;
+
+    // Création de la nouvelle donnée
+    newLstDta[myNbrDta] = new CData(section, lneIni) ;
+
+    // Mise à jour des membres
+    myLstDta = newLstDta ;
+    myNbrDta++ ;
+
+    } // Fin de addData
+
+  //---- Accès à une donnée de la liste ---------------------------------------
+  private CData myGetData(int numDta)
+    {
+    if (numDta<myNbrDta)
+      return myLstDta[numDta] ;
+    else
+      return null ;
+    }
+
+  } // Fin de la class

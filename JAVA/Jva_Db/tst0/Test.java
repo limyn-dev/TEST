@@ -1,0 +1,27 @@
+package DB.tst0;
+
+import CsoIO.CsoIO ;
+
+public class Test
+  {
+
+  public static void main(String[] args)
+    {
+    CsoIO cso = new CsoIO() ;
+
+    CConAccess conAcs = new CConAccess("jdb0") ;
+
+
+
+    //cso.Afficher(conAcs.NomTable(1)) ;
+    cso.Valider("Valider1");
+    cso.Valider("Valider2");
+    cso.Valider("Valider3");
+    cso.Valider("Valider4");
+    cso.Valider("Valider5");
+
+
+    }
+
+
+  }

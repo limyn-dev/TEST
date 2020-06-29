@@ -1,0 +1,31 @@
+package ecole;
+
+/**
+ * Title:        Ex2
+ * Description:  Main
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author :     Yves Delay
+ * @version 1.0
+ */
+
+public abstract class CPersonne
+  {
+
+  public CPersonne()
+    { setNom(""); setAnIn(0); }
+  public CPersonne(String nom, int anDebut)
+    { setNom(nom); setAnIn(anDebut); }
+
+  public void setNom(String nom)    { Nom = nom ;   }
+  public void setAnIn(int anDebut)  { AnIn = anDebut ; }
+
+  public String getNom()          { return Nom ;  }
+  public int    getAnIn()         { return AnIn ; }
+
+
+  //---------------------------------------------------------------------------
+  String Nom ;
+  int    AnIn ;
+
+  }

@@ -1,0 +1,32 @@
+package menage;
+
+/**
+ * Title:        Menage
+ * Description:
+ * Copyright:    Copyright (c) 2001
+ * Company:      _
+ * @author Yves Delay
+ * @version 1.0
+ */
+
+public class C_Biens
+   {
+   // Membres
+   private int prixAchat ;
+   private string marque ;
+
+   // Setter
+   public void PrixAchat(int prx)   { prixAchat = prx ; }
+   public void Marque(string mrq)   { marque = mrq ;    }
+
+   // Getter
+   public int PrixAchat()           { return prixAchat;  }
+   public string Marque()           { return marque ;    }
+
+   // Constructeurs
+   public C_Biens()                 { prixAchat=0; marque="";  }
+
+   // Methodes
+   private double prixVente() ;
+
+   }

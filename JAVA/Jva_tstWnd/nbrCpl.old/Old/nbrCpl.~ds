@@ -1,0 +1,30 @@
+[Browser]
+Create=1
+Visible=1
+State=2
+Left=0
+Top=80
+Width=1189
+Height=897
+ClientWidth=1252
+ClientHeight=954
+NavigationPane=0
+StructurePane=0
+SplitNavigationView=289
+SplitNavigationPView=867
+SplitBrowseView=218
+SplitTabsStatus=171
+ivSplitClientMessages=216
+Curtain=1
+
+[Tab0]
+NavigationURL=e:\Program Files\JBuilder3\myprojects\nbrCpl\C_NbC.java
+URLCount=1
+URL0=e:\Program Files\JBuilder3\myprojects\nbrCpl\C_NbC.java
+
+[Tab0@e:\Program Files\JBuilder3\myprojects\nbrCpl\C_NbC.java]
+CursorX=3
+CursorY=67
+TopLine=35
+LeftCol=1
+

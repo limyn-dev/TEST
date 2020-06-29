@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--JBuilder XML Project-->
+<project>
+  <property category="debug.0" name="ShowBreakpointInNoTracingClass" value="0" />
+  <property category="debug.0" name="SmartStepSkipStaticInitializers" value="0" />
+  <property category="debug.0" name="SmartStepSkipSynthetics" value="0" />
+  <property category="jbuilder.debug" name="ShowBreakpointInNoTracingClass" value="0" />
+  <property category="jbuilder.debug" name="SmartStepSkipStaticInitializers" value="0" />
+  <property category="jbuilder.debug" name="SmartStepSkipSynthetics" value="0" />
+  <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.AppletRunner" />
+  <property category="runtime.0" name="applet.class" value="tstswing.aplMain" />
+  <property category="runtime.0" name="applet.height" value="600" />
+  <property category="runtime.0" name="applet.width" value="600" />
+  <property category="sys" name="AuthorLabel" value="@author" />
+  <property category="sys" name="BackupPath" value="bak" />
+  <property category="sys" name="BeansInstantiate" value="false" />
+  <property category="sys" name="BraceStyle" value="0" />
+  <property category="sys" name="CheckStable" value="1" />
+  <property category="sys" name="Company" value="_" />
+  <property category="sys" name="CompanyLabel" value="Company:" />
+  <property category="sys" name="Copyright" value="Copyright (c) 2002" />
+  <property category="sys" name="CopyrightLabel" value="Copyright:" />
+  <property category="sys" name="Description" value="" />
+  <property category="sys" name="DescriptionLabel" value="Description:" />
+  <property category="sys" name="DocPath" value="doc" />
+  <property category="sys" name="EventMatch" value="false" />
+  <property category="sys" name="EventStyle" value="1" />
+  <property category="sys" name="ExcludeClassEnabled" value="0" />
+  <property category="sys" name="InstanceVisibility" value="0" />
+  <property category="sys" name="JDK" value="java 1.3.0_02" />
+  <property category="sys" name="LastTag" value="0" />
+  <property category="sys" name="Libraries" value="" />
+  <property category="sys" name="MakeStable" value="0" />
+  <property category="sys" name="OutPath" value="classes" />
+  <property category="sys" name="SourcePath" value="src" />
+  <property category="sys" name="Title" value="Test de l&apos;interface swing" />
+  <property category="sys" name="TitleLabel" value="Title:" />
+  <property category="sys" name="Version" value="1.0" />
+  <property category="sys" name="VersionLabel" value="@version" />
+  <property category="sys" name="WorkingDirectory" value="." />
+  <file path="classes/aplMain.html" />
+  <file path="src/tstswing/aplMain.java" />
+  <file path="src/tstswing/CCategorie.java" />
+  <file path="src/tstswing/CCategories.java" />
+  <file path="src/tstswing/CCommande.java" />
+  <file path="src/tstswing/CDataBase.java" />
+  <file path="src/tstswing/CDetailCommande.java" />
+  <file path="src/tstswing/CFournisseur.java" />
+  <file path="src/tstswing/CFournisseurs.java" />
+  <file path="src/tstswing/CProduit.java" />
+  <file path="src/tstswing/CProduits.java" />
+  <file path="tstSwing.html" />
+</project>
+

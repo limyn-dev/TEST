@@ -1,0 +1,150 @@
+package tstmysql;
+
+
+
+import java.sql.* ;
+
+
+
+/**
+ * Title:
+ * Description:
+ * Copyright:    Copyright (c) 2000
+ * Company:
+ * @author
+ * @version 1.0
+ */
+
+
+
+public class CDtb
+   {
+
+   /* Membres
+   --------------------------------------------------------------------------*/
+   private Connection   myCon ; // Connextion sur la db
+   private String       myNme ; // Nom de la db
+   private String       myUsr ; // User
+
+   /* Gestion de l'instance
+   --------------------------------------------------------------------------*/
+   public CDtb()                       { myInit() ;   }
+
+   /* Accesseurs
+   --------------------------------------------------------------------------*/
+   public void SetName(String name)    {  myNme = name ;   }
+   public void SetUser(String user)    {  myUsr = user ;   }
+
+   /* Fonctionalités
+   --------------------------------------------------------------------------*/
+   public void      Open(String pass)  {  myOpen(pass) ;             }
+   public void      Close()            {  myClose() ;                }
+   public void      Execute(String cmd){  myExecute(cmd) ;    }
+
+
+
+   /**************************************************************************/
+
+
+
+   /* Initialisation de l'instance
+   --------------------------------------------------------------------------*/
+   private void myInit()
+      {
+      myNme="" ;
+      myUsr="" ;
+      }
+
+   /* Ouverture de la db
+   --------------------------------------------------------------------------*/
+   private void myOpen(String pass)
+      {
+      try
+         {
+         String strCon = "" ;
+	 // Chaine de connexion
+
+         strCon = strCon + "jdbc:mysql:" ;
+         strCon = strCon + "//localhost/" + myNme ;
+         strCon = strCon + "?user="       + myUsr ;
+         strCon = strCon + "&password="   + pass ;
+
+         // Chargement du gestionnaire de connexion
+	Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+         // Ouverture de la connexion
+         myWrtMsg("myOpen", "Connexion: " + strCon) ;
+         myCon = DriverManager.getConnection(strCon) ;
+	 myWrtMsg("myOpen", "Connexion Ok ") ;
+
+         }
+      catch (ClassNotFoundException e) {  myWrtErr("myOpen", e) ; }
+      catch (SQLException e)           {  myWrtErr("myOpen", e) ; }
+      catch (Exception e)              {  myWrtErr("myOpen", e) ; }
+      } // fin de myOpen
+
+
+   /* Déconnexion de la DB
+   --------------------------------------------------------------------------*/
+   private void myClose()
+      {
+      try
+	 {
+	 myWrtMsg("myClose", "Deconnexion: " + myCon.toString()) ;
+	 myCon.close() ;
+	 myWrtMsg("myClose", "Deconnexion Ok") ;
+	 }
+      catch (SQLException e)  {  myWrtErr("myClose", e) ;   }
+      catch (Exception e)     {  myWrtErr("myClose", e) ;   }
+      }
+
+   /* Execution de la commande
+   ---------------------------------------------------------------------------*/
+   private void myExecute(String cmd)
+      {
+      try
+         {
+
+	 // Execution de la commande
+	 myWrtMsg("ExecuteCmd", "Execution: " + cmd) ;
+         java.sql.ResultSet rst = myCon.prepareStatement(cmd) ;
+	 myWrtMsg("ExecuteCmd", "Execution Ok") ;
+
+	 }
+      //catch (SQLException e)  {  myWrtErr("myOpen", e) ; }
+      catch (Exception e)     {  myWrtErr("myOpen", e) ; }
+      } // fin de ExecutCmd
+
+   /* Gestion des messages
+   --------------------------------------------------------------------------*/
+   private void myWrtMsg(String nomFct, String msg)
+      {
+      String str="" ;
+      str = str + "- CDtb." + nomFct + " > " ;
+      str = str + msg ;
+      System.out.println(str) ;
+      }
+   private void myWrtErr(String nomFct, Exception e)
+      {
+      String str = "" ;
+      str = str + "- CDtb." + nomFct + " > " ;
+      str = str + e.getClass().getName() + ": " ;
+      str = str + " MESSAGE='" + e.getMessage() + "'" ;
+      System.out.println(str) ;
+      }
+   private void myWrtErr(String nomFct, SQLException eSQL)
+      {
+      String str = "" ;
+      str = str + "- CDtb."   + nomFct + " > " ;
+      str = str + eSQL.getClass().getName() + ": " ;
+      str = str + " MESSAGE='" + eSQL.getMessage() + "'" ;
+      str = str + " / CODE="    + new Integer(eSQL.getErrorCode()).toString() ;
+      str = str + " / ETAT="    + eSQL.getSQLState() ;
+      System.out.println(str) ;
+
+      if (eSQL.getNextException()!=null)
+	 myWrtErr(nomFct, eSQL.getNextException()) ;
+
+      }  // Fin de myWrtErr
+
+   } // Fin de CDtb

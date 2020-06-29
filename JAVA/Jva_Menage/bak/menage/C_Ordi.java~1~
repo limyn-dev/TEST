@@ -1,0 +1,31 @@
+package menage;
+
+/**
+ * Title:        Menage
+ * Description:
+ * Copyright:    Copyright (c) 2001
+ * Company:      _
+ * @author Yves Delay
+ * @version 1.0
+ */
+
+public class C_Ordi extends C_Bien
+   {
+
+   // Membres
+   private int vitesse ;
+
+   // Setter
+   public void Vitesse(int vit)  { vitesse = vit ;    }
+
+   // Getter
+   public int Vitesse()          { return vitesse ;   }
+
+   // Constructeur
+   public C_Ordi()
+      { super(); Vitesse(0);                                      }
+   public C_Ordi(int prx, string mrq, int vit)
+      { super(prx, mrq) ; Vitesse(vit) ;                          }
+   public C_Ordi(C_Ordi o)
+      { super(o.PrixAchat() , o.Marque()); Vitesse(o.Vitesse());  }
+   }

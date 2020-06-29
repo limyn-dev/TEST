@@ -1,0 +1,29 @@
+package ecole;
+
+/**
+ * Title:        Ex2
+ * Description:  Main
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author :     Yves Delay
+ * @version 1.0
+ */
+
+public class CEtudiant extends CPersonne
+  {
+
+  public CEtudiant()
+    { super(); setSection(""); setUniversite("") }
+  public CEtudiant(String nom, int anDebut, String section, String universite )
+    { super(nom, anDebut); setSection(branche); setUniversite(universite)  }
+
+  public void setSection(String section)        { Sct = section ;       }
+  public void setUniversite(String universite)  { Uni = universite ;    }
+
+  public String getSection()                    { return Sct ;      }
+  public String getUniversite()                 { return Uni ;      }
+
+  //---------------------------------------------------------------------------
+  String Sct ;
+  String Uni ;
+  }

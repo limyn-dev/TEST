@@ -1,0 +1,53 @@
+package gestfav;
+
+import java.io.* ;
+
+/**
+ * Title      : Gestion des favorites
+ * Description: Information d'un fichier *.url
+ * Copyright  : Copyright (c) 2000
+ * Company    : _
+ * @author    : Yves Delay
+ * @version   : 1.0
+ */
+
+public class CUrl
+  {
+
+  // Membre
+  String myLien ;
+  String myInfo ;
+
+  public CUrl(String pth) { myInit(path) ;  }
+
+
+
+  /***************************************************************************/
+
+
+  private void myInit(File fic)
+    {
+    boolean openOk = true ;
+    FileInputStream stmFic ;
+
+    // Ouverture du fichier
+    try                             { stmFic = new FileInputStream(fic) ; }
+    catch (FileNotFoundException e) { openOk = false ;  }
+    catch (Exception e)             { openOk = false ;  }
+    if (openOk)
+      {
+
+      // Lecture des infos
+      stmFic.r
+      // Fermeture du fichier
+
+      }
+    else
+      {
+      myLien = "Pas de lien trouvé"
+      myInfo = "Erreur lors de l'ouverture du fichier: " + fic.getAbsolutePath() ;
+      }
+
+    } // Fin de l'initialisation de la class
+
+  } // Fin de la class

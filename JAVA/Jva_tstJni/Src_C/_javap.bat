@@ -1,0 +1,1 @@
+javap -classpath "D:\Esis\Java\Exemples\TstJni\classes" -private -s -verbose tstjni.CNative>fcts.txt

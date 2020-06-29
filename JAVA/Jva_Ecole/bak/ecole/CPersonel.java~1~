@@ -1,0 +1,34 @@
+package ecole;
+
+/**
+ * Title:        Ex2
+ * Description:  Main
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author :     Yves Delay
+ * @version 1.0
+ */
+
+public class CPersonel extends CPersonne
+  {
+
+  public CPersonel()
+    { setDepartement(""); setSalaire(0); }
+  public CPersonel(String departement, int salaire)
+    { setDepartement(departement); setSalaire(salaire); }
+
+  public void setDepartement(String departement)  { Dpt = departement ;   }
+  public void setSalaire(int salaire)             { Sal = salaire ; }
+
+  public String getDepartement()                  { return Dpt ;  }
+  public int    getSalaire()                      { return Sal ; }
+
+
+  //---------------------------------------------------------------------------
+  private String Dpt ;
+  private int    Sal ;
+
+
+  //---------------------------------------------------------------------------
+
+  }

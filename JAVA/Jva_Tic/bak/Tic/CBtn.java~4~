@@ -1,0 +1,40 @@
+package Tic;
+
+import javax.swing.* ;
+
+/**
+ * Title:        Tic
+ * Description:
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author Yves Delay
+ * @version 1.0
+ */
+
+public class CBtn extends javax.swing.JButton
+  {
+
+  public CBtn(int lne, int col)
+    {
+    super() ;
+    imClik = false ;
+    }
+
+  public void SetFlag()
+    {
+    flag=true ;
+    }
+  public boolean getFlag()
+    {
+    if (flag)
+      {
+      flag= false ;
+      return true ;
+      }
+    else
+      return false ;
+    }
+
+  private boolean flag ;
+
+  }

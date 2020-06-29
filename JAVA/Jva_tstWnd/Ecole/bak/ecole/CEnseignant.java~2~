@@ -1,0 +1,29 @@
+package ecole;
+
+/**
+ * Title:        Ex2
+ * Description:  Main
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author :     Yves Delay
+ * @version 1.0
+ */
+
+public abstract class CEnseignant extends CPersonel
+  {
+
+  public CEnseignant()
+    { super(); setBranche(""); }
+  public CEnseignant(String nom, int anDebut, String departement, int salaire,
+                                                                 String branche)
+    { super(nom, anDebut, departement, salaire); setBranche(branche) ;  }
+
+  public void setBranche(String branche)  { Brc = branche ;   }
+
+  public String getBranche()              { return Brc ;      }
+
+
+
+  //---------------------------------------------------------------------------
+  String brc ;
+  }

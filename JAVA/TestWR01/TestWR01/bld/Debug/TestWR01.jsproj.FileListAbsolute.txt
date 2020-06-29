@@ -1,0 +1,13 @@
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bin\Debug\resources.pri
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bin\Debug\AppxManifest.xml
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bin\Debug\TestWR01.build.appxrecipe
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\priconfig.xml.intermediate
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\layout.resfiles.intermediate
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\resources.resfiles.intermediate
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\pri.resfiles.intermediate
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\priconfig.xml
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\layout.resfiles
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\resources.resfiles
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\pri.resfiles
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\LanguageQualifiers.txt
+C:\Users\user1\Desktop\SkyDrive\Documents - Yves\Projets\JAVA\TestWR01\TestWR01\bld\Debug\ProjectArchitectures.txt

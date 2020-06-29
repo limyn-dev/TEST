@@ -1,0 +1,31 @@
+package alea;
+
+public class test
+  {
+
+  public static void main (String args[])
+    {
+
+    Aleat tblA = new Aleat(100, 6);
+
+    System.out.println("val a de l'index 2 et 20: "+tblA.getVal(2)+", "+tblA.getVal(20));
+
+    // Copie de la table
+    int[] ntbla = new int[100];
+    ntbla = tblA.getVals();
+    for(int i=0;i<ntbla.length;i+=10)
+      {
+      System.out.println("val du nouveau tableau["+i+"] "+ntbla[i]);
+      }
+
+    int[] hist = new int[7];
+    hist = tblA.getHisto();
+
+    for(int i=1;i<hist.length;i++)
+      {
+      System.out.println("rang "+i+": "+hist[i]);
+      }
+
+    } // Fin du main
+
+  } // Fin de la classe

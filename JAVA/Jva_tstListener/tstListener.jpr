@@ -1,0 +1,13 @@
+;JBuilder -- PROJECT FILE VERSION {2.00} - do not alter this line!
+#0=tstListener.jpr
+sys[0].BackupPath=C%%|\Documents and Settings\delayves\jbproject\bak
+sys[0].CheckStable=1
+sys[0].DocPath=C%%|\Documents and Settings\delayves\jbproject\doc
+sys[0].ExcludeClassEnabled=0
+sys[0].JDK=java 1.3.0-C
+sys[0].LastTag=0
+sys[0].Libraries=Open Tools SDK
+sys[0].MakeStable=0
+sys[0].OutPath=C%%|\Documents and Settings\delayves\jbproject\classes
+sys[0].SourcePath=C%%|\Documents and Settings\delayves\jbproject\src
+sys[0].WorkingDirectory=C%|/Documents and Settings/delayves/jbproject

@@ -1,0 +1,5 @@
+USEUNIT("CNative.cpp");
+//---------------------------------------------------------------------------
+Ce fichier n'est utilisé que par le Gestionnaire de projet et doit être traité comme le fichier projet
+
+DllMain

@@ -1,0 +1,16 @@
+package ecole;
+
+/**
+ * Title:        Ex2
+ * Description:  Main
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author :     Yves Delay
+ * @version 1.0
+ */
+
+public class CSecraitaire {
+
+  public CSecraitaire() {
+  }
+}

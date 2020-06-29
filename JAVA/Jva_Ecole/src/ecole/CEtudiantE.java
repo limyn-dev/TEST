@@ -1,0 +1,27 @@
+package ecole;
+
+/**
+ * Title:
+ * Description:
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author
+ * @version 1.0
+ */
+
+public class CEtudiantE extends CEtudiant
+  {
+
+  public CEtudiantE()
+    { super(); setUniversite(""); }
+  public CEtudiantE(String nom, int anDebut, String section, String universite )
+    { super(nom, anDebut, section); setUniversite(universite); }
+
+  public void setUniversite(String universite)  { Uni = universite ;    }
+
+  public String getUniversite()                 { return Uni ;      }
+
+  //---------------------------------------------------------------------------
+  private String Uni ;
+
+  }

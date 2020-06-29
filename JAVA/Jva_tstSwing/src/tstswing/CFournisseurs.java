@@ -1,0 +1,49 @@
+package tstswing;
+
+
+
+import java.util.*;
+
+
+
+/******************************************************************************
+ * Title      : Test de l'interface swing
+ * Description: Liste des fournisseurs
+ * Copyright  : Copyright (c) 2002
+ * Company    : _
+ * @author    : Yves Delay
+ * @version   : 1.0
+ *****************************************************************************/
+
+
+
+public class CFournisseurs extends Vector
+  {
+
+  // Instanciation
+  public CFournisseurs() { super() ;  myInit() ;  }
+
+   // Ajout d'une catégorie, spécialisation de Vecteur
+  public void     insertElementAt(CFournisseur f, int i)  { super.insertElementAt(f, i) ; }
+  public void     add            (int i, CFournisseur f)  { super.add(i, f) ;             }
+  public boolean  add            (CFournisseur f)         { return super.add(f) ;         }
+  public boolean  addAll         (CFournisseurs f)        { return super.addAll(f) ;      }
+  public boolean  addAll         (int i, CFournisseurs f) { return super.addAll(i, f) ;   }
+  public void     addElement     (CFournisseur f)         { super.addElement(f) ;         }
+
+
+
+  /***************************************************************************/
+
+
+
+  /* Instanciation
+  ---------------------------------------------------------------------------*/
+  private void myInit()
+    {
+    }
+
+  }
+
+
+

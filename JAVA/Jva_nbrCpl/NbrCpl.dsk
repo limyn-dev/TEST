@@ -1,0 +1,30 @@
+[Browser]
+Create=1
+Visible=1
+State=2
+Left=0
+Top=80
+Width=1189
+Height=897
+ClientWidth=1252
+ClientHeight=926
+NavigationPane=1
+StructurePane=1
+SplitNavigationView=289
+SplitNavigationPView=867
+SplitBrowseView=218
+SplitTabsStatus=171
+ivSplitClientMessages=216
+Curtain=0
+
+[Tab0]
+NavigationURL=.\C%%|\Documents and Settings\delayves\jbproject\NbrCpl\src\nbrcpl\C_Cpl.java
+URLCount=1
+URL0=.\C%%|\Documents and Settings\delayves\jbproject\NbrCpl\src\nbrcpl\C_Cpl.java
+
+[Tab0@.\C%%|\Documents and Settings\delayves\jbproject\NbrCpl\src\nbrcpl\C_Cpl.java]
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+

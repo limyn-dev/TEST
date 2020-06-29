@@ -1,0 +1,35 @@
+package Employe;
+
+import java.lang.* ;
+import CsoIO.CsoIO ;
+
+public class C_Personne
+  {
+
+  public C_Personne()                       { setNom("") ;
+                                              setPrenom("") ;
+                                              setDateNais(0) ;                }
+  public C_Personne(String nom,
+                    String prenom,
+                    double dateNais)        { setNom(nom) ;
+                                              setPrenom(prenom) ;
+                                              setDateNais(dateNais) ;                }
+
+  public void setNom(String nom)            { Nom = new String(nom) ;         }
+  public void setPrenom(String prenom)      { Prenom = new String(prenom) ;   }
+  public void setDateNais(double dateNais)  { DateNais = dateNais ;           }
+
+  public String getNom()                    { return Nom ;                    }
+  public String getPrenom()                 { return Prenom ;                 }
+  public double getDateNais()               { return DateNais ;               }
+
+  public String toString()                  { return Nom + " " + Prenom ;     }
+
+
+
+  //---------------------------------------------------------------------------
+  private String Nom ;
+  private String Prenom ;
+  private double DateNais ;
+
+  }

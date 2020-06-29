@@ -1,0 +1,35 @@
+package Tic;
+
+import javax.swing.* ;
+
+/**
+ * Title:        Tic
+ * Description:
+ * Copyright:    Copyright (c) 2002
+ * Company:
+ * @author Yves Delay
+ * @version 1.0
+ */
+
+public class CBtn extends Button
+  {
+
+  public CBtn(int lne, int col)
+    {
+    super() ;
+    myLne = lne ;
+    myCol = col ;
+    myVal = 0 ;
+    }
+
+  public void setVal(int val)    { myVal = val ; }
+
+  public int getVal()               { return myVal ; }
+  public int getLne()               { return myLne; }
+  public int getCol()               { return myCol; }
+
+  private int myLne ;
+  private int myCol ;
+  private int myVal ;
+
+  }

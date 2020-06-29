@@ -1,0 +1,21 @@
+package Employe;
+
+public class C_Enploye extends C_Personne
+  {
+
+  public C_Enploye()                  { super() ;
+                                        setSalaire(0) ;                       }
+  public C_Enploye( String nom,
+                    String prenom,
+                    double dateNais,
+                    int    salaire  ) { super(nom, prenom, dateNais) ;
+                                        setSalaire(salaire) ;                 }
+
+  public void setSalaire(int salaire) { Salaire = salaire ;                   }
+
+  public int getSalaire()             { return Salaire ;                      }
+
+  //---------------------------------------------------------------------------
+  private int Salaire ;
+
+  }

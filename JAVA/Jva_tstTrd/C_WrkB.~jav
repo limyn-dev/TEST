@@ -1,0 +1,14 @@
+package tstTrd;
+
+import java.lang.* ;
+
+public class C_WrkB implements Runnable
+  {
+
+  public void run()
+    {
+    System.out.println ("Je suis le gentil processus B");
+    }
+
+  }
+ 

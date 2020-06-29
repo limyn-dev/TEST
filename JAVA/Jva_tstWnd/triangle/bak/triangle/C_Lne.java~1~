@@ -1,0 +1,36 @@
+package triangle;
+
+import java.lang.* ;
+import triangle.C_Pnt ;
+
+public class C_Lne
+  {
+
+  // Membres
+  private C_Pnt a ;
+  private C_Pnt b ;
+
+  // Accesseurs
+  public void  A(C_Pnt a)         { this.a=a;       }
+  public void  B(C_Pnt b)         { this.b=b;       }
+  public C_Pnt A(void)            { return this.a;  }
+  public C_Pnt B(void)            { return this.b;  }
+
+  // Constructeurs
+  public C_Lne()                  { this.a=C_Pnt(); this.b=C_Pnt()    }
+  public C_Lne(C_Pnt a, C_Pnt a)  { this.a=a ;      this.b=b;         }
+  public C_Lne(C_Lne lne)         { this.a=lne.A(); this.b=lne.B();   }
+
+  // Convertion
+  public String toString()  { return A.toString() + " / " + B.toString();     }
+
+  // Main
+  public static main()
+    {
+    C_Lne lne = new C_Lne ;
+
+    System.out.println(lne.toString()) ;
+
+    }
+
+  }

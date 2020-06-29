@@ -1,0 +1,74 @@
+package tstswing;
+
+/**
+ * Title:        Test de l'interface swing
+ * Description:
+ * Copyright:    Copyright (c) 2002
+ * Company:      _
+ * @author Yves Delay
+ * @version 1.0
+ */
+
+public class CProduit extends java.lang.Object
+  {
+
+  // Mmebres
+  private int         myID ;
+  private String      myName ;
+  private int         mySupplierID ;
+  private CCategorie  myCategory ;
+  private String      myQuantityPerUnit ;
+  private long        myUnitPrice ;
+  private int         myUnitsInStock ;
+  private int         myUnitsOnOrder ;
+  private int         myReorderLevel ;
+  private boolean     myDiscontinued ;
+
+  // Instanciation
+  public CProduit()                                           { myInit() ;                            }
+
+  // Accesseurs
+  public int        GetID              ()                           { return myID ;                  }
+  public String     GetName            ()                           { return myName ;                }
+  public int        GetSupplierID      ()                           { return mySupplierID ;                 }
+  public CCategorie GetCategoryID      ()                           { return myCategory ;                   }
+  public String     GetQuantityPerUnit ()                           { return myQuantityPerUnit ;            }
+  public long       GetUnitPrice       ()                           { return myUnitPrice ;                  }
+  public int        GetUnitsInStock    ()                           { return myUnitsInStock ;               }
+  public int        GetUnitsOnOrder    ()                           { return myUnitsOnOrder ;               }
+  public int        GetReorderLevel    ()                           { return myReorderLevel ;               }
+  public boolean    GetDiscontinued    ()                           { return myDiscontinued ;               }
+  public void       SetID              (int        id             ) { myID              = id ;        }
+  public void       SetName            (String     name           ) { myName            = name ;      }
+  public void       SetSupplierID      (int        supplierID     ) { mySupplierID      = supplierID;       }
+  public void       SetCategory        (CCategorie category       ) { myCategory        = category;         }
+  public void       SetQuantityPerUnit (String     quantityPerUnit) { myQuantityPerUnit = quantityPerUnit;  }
+  public void       SetUnitPrice       (long       unitPrice      ) { myUnitPrice       = unitPrice;        }
+  public void       SetUnitsInStock    (int        unitsInStock   ) { myUnitsInStock    = unitsInStock;     }
+  public void       SetUnitsOnOrder    (int        unitsOnOrder   ) { myUnitsOnOrder    = unitsOnOrder;     }
+  public void       SetReorderLevel    (int        reorderLevel   ) { myReorderLevel    = reorderLevel;     }
+  public void       SetDiscontinued    (boolean    discontinued   ) { myDiscontinued    = discontinued;     }
+
+
+
+  /***************************************************************************/
+
+
+
+  /* Instanciation
+  ---------------------------------------------------------------------------*/
+  private void myInit()
+    {
+    myProductID       = 0 ;
+    myProductName     = "NO DATA";
+    mySupplierID      = 0;
+    myCategory        = new CCategorie() ;
+    myQuantityPerUnit = "NO DATA";
+    myUnitPrice       = 0;
+    myUnitsInStock    = 0;
+    myUnitsOnOrder    = 0;
+    myReorderLevel    = 0;
+    myDiscontinued    = false;
+    }
+
+  }

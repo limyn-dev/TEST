@@ -1,0 +1,29 @@
+
+
+public class Rectangle extends Shape {
+	
+	protected double w,h;
+	
+	public Rectangle(double x, double y) {
+		w = x;
+		h = y;
+	}
+	
+	public double getWith() {
+		return w;
+	}
+	
+	public double getHeight() {
+		return h;
+	}
+
+
+	public double area() {
+		return w * h;
+	}
+	
+	public double circ() {
+		return 2.0 * (w + h);
+	}
+
+}

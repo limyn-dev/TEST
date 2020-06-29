@@ -1,0 +1,46 @@
+package Employe;
+
+/*======================================================================================================================
+   Description:
+      Extension de la class personne par l'ajout des données propres à l'employé
+
+======================================================================================================================*/
+
+public class C_Employee extends C_Person
+   {
+
+   /* Constructeurs
+   -------------------------------------------------------------------------------------------------------------------*/
+   public C_Employee()                       { super(); myInit(0, 0);                                                   }
+   public C_Employee(String firstName,
+                     String lastName,
+                     double birthDay,
+                     int employeeId,
+                     int salary)             { super(firstName, lastName, birthDay); myInit(employeeId, salary);        }
+
+   /* Setters
+   -------------------------------------------------------------------------------------------------------------------*/
+   public void setEmployeeId(int employeeId) { myEmployeeId = employeeId ;                                              }
+   public void setSalary(int salary)         { mySalary = salary ;                                                      }
+
+   /* Getters
+   -------------------------------------------------------------------------------------------------------------------*/
+   public int getEmployeeId()                { return myEmployeeId ;                                                    }
+   public int getSalaire()                   { return mySalary ;                                                        }
+
+   /* Membres
+   -------------------------------------------------------------------------------------------------------------------*/
+   private int myEmployeeId ;
+   private int mySalary ;
+
+   /* Initialisation de la class
+   -------------------------------------------------------------------------------------------------------------------*/
+   private void myInit(int employeeId, int salary)
+      {
+      setEmployeeId(employeeId) ;
+      setSalary(salary) ;
+      }
+
+
+
+   }

@@ -1,0 +1,13 @@
+package ecole;
+
+public class CPersonne
+  {
+
+  public CPersonne() {}
+
+
+  //---------------------------------------------------------------------------
+  String Nom ;
+  String Prenom ;
+
+  }

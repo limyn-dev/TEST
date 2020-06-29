@@ -1,0 +1,63 @@
+package Employe;
+
+/*======================================================================================================================
+   Description:
+      Classe de base pour l'encapsulation des données d'une personne.
+
+======================================================================================================================*/
+public class C_Person
+  {
+
+   /* Constructeurs
+   -------------------------------------------------------------------------------------------------------------------*/
+   public C_Person()                                                       { myInit() ;                                 }
+   public C_Person(String firstName, String lastName, double birthDay)     { myInit(firstName, lastName, birthDay) ;    }
+
+   /* Setters
+   -------------------------------------------------------------------------------------------------------------------*/
+   public void setFirstName(String nom)                                    { FirstName = new String(nom) ;              }
+   public void setPrenom(String prenom)                                    { Prenom = new String(prenom) ;              }
+   public void setDateNais(double dateNais)                                { DateNais = dateNais ;                      }
+
+   /* Getters
+   -------------------------------------------------------------------------------------------------------------------*/
+   public String getFirstName()                                            { return FirstName ;                         }
+   public String getPrenom()                                               { return Prenom ;                            }
+   public double getDateNais()                                             { return DateNais ;                          }
+
+   /* Méthodes public
+   -------------------------------------------------------------------------------------------------------------------*/
+   public String toString()                                                { return FirstName + " " + Prenom ;          }
+
+
+
+   /* Partie privée
+   ===================================================================================================================*/
+
+
+
+   /* Membres
+   -------------------------------------------------------------------------------------------------------------------*/
+   private String FirstName ;
+   private String LastName ;
+   private double BirthDay ;
+
+
+
+   /* Initialisation des membres
+   -------------------------------------------------------------------------------------------------------------------*/
+   private void myInit()
+      {
+      setFirstName("") ;
+      setLastName("") ;
+      setBirthDay(0) ;
+      }
+   private void myInit(String firstName, String lastName, double birthDay)
+      {
+      setFirstName(firstName) ;
+      setLastName(lastName) ;
+      setBirthDay(birthDay) ;
+      }
+
+
+   }
