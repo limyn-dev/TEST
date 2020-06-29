@@ -1,0 +1,58 @@
+/*==================================================================================
+
+   Description: 
+      Global HTML styles.
+   
+   History:
+      07.12.2018 delay.yves@gmail.com : Creation
+      
+==================================================================================*/
+/* Size and position */
+DIV.PAGE       { top:  0px; left:  0px; width:640px; height:800px; display:visible;                               }
+DIV.PAGE_HIDE  {                                                   display:   none;                               }
+DIV.B1         { top:  0px; left:  0px; width:540px; height:250px;                                                }
+DIV.B2         { top:  0px; left:  0px; width: auto; height:205px;                                                }
+DIV.B3         { top:  0px; left:  0px; width: 100%; height:200px;                                                }
+TABLE.B3       { top:  0px; left:  0px; width: 100%; height: 100%;                                                }
+TD.B3L         { top:  0px; left:  0px; width:310px; height: 100%;                                                }
+TD.B3C         { top:  0px; left:  0px; width: 20px; height: 100%;                                                }
+TD.B3R         { top:  0px; left:  0px; width:190px; height: 100%;                                                }
+IMG.B3         { top:  0px; left:  0px; width: auto; height:  60%;                                                }
+DIV.B4         { top:  0px; left:  0px; width: 100%; height:100px;                                                }
+
+/* Background */
+DIV.PAGE       { background-color:WHITE;                                                                          }
+DIV.B1         { background-color:WHITE; background-image: url('./IMG/automne25B.png');                           }
+DIV.B4         { background-color:  RED;                                                                          }
+
+/* Align */
+DIV.B1         { text-align:CENTER;                                                                               }
+DIV.B3L        { text-align: RIGHT;                                                                               }
+
+/* Fonts */
+DIV.B1         { font-size:56px; color:WHITE; font-family: 'Palatino'; font-style:italic; font-stretch:condensed; }
+DIV.B2         { font-size:15px;              font-family:'Helvetica';                                            }
+TD.B2          { font-size:14px;              font-family:'Helvetica';                                            }
+TD.B3R         { font-size:14px;              font-family:'Helvetica';                                            }
+SPAN.T1        {                 color:  RED;                                                                     }
+
+/* Margins */
+DIV.PAGE       { margin-top:0px; margin-right:0px; margin-bottom:0px; margin-left:0px;                            }
+DIV.B2         { margin-top:0px; margin-right:0px; margin-bottom:0px; margin-left:0px;                            }
+
+/* Padding */
+DIV.PAGE       { padding-top: 0px; padding-right:  0px; padding-bottom: 0px; padding-left: 0px;                   }
+DIV.B1         { padding-top:20px; padding-right: 50px; padding-bottom: 0px; padding-left:50px;                   }
+DIV.B2         { padding-top:25px; padding-right: 20px; padding-bottom: 0px; padding-left:20px;                   }
+TD.B2          { padding-top:10px; padding-right: 10px; padding-bottom:10px; padding-left:10px;                   }
+DIV.B3         { padding-top: 0px; padding-right:  0px; padding-bottom: 0px; padding-left: 0px;                   }
+TD.B3R         { padding-top: 0px; padding-right:120px; padding-bottom: 0px; padding-left: 0px;                   }
+
+/* Borders */
+DIV.PAGE       { border-style: none; border-width:1px; border-color:    RED;                                      }
+DIV.B1         { border-style: none; border-width:1px; border-color:   BLUE;                                      }
+DIV.B2         { border-style: none; border-width:1px; border-color:  BLACK;                                      }
+DIV.B3         { border-style: none; border-width:1px; border-color:   GRAY;                                      }
+TD.B3L         { border-style: none; border-width:1px; border-color: YELLOW;                                      }
+TD.B3R         { border-style: none; border-width:1px; border-color:  GREEN;                                      }
+DIV.B4         { border-style: none; border-width:1px; border-color:  BLACK;                                      }

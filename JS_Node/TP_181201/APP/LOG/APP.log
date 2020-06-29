@@ -1,0 +1,51 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : lundi, 10 d‚cembre 2018 08:02:16
+   Source : C:\Users\U10754\Desktop\TP_181201\Sources\APP\
+     Dest : C:\ProgramData\TP_181201\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /PURGE /MIR /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   7	C:\Users\U10754\Desktop\TP_181201\Sources\APP\
+	    New File  		    3459	app.js  0%  100%  
+	    New File  		     766	favicon.ICO  0%  100%  
+	    New File  		   12550	fonts.html  0%   99%   99%  100%  
+	    New File  		    1850	index.html  0%  100%  
+	    New File  		    2946	page.html  0%  100%  
+	    New File  		    4633	style.css  0%  100%  
+	    New File  		      84	TEST.cmd  0%  100%  
+	  New Dir         13	C:\Users\U10754\Desktop\TP_181201\Sources\APP\IMG\
+	    New File  		   2.6 m	automne.jpg  0%   19%   38%   57%   76%   95%   99%   99%  100%  
+	    New File  		   70749	automne25.jpg  0%   99%   99%  100%  
+	    New File  		  329007	Automne25B.png  0%   39%   79%   99%   99%  100%  
+	    New File  		  602707	automne50.jpg  0%   43%   86%   99%   99%  100%  
+	    New File  		   1.6 m	Automne50B.png  0%   15%   30%   45%   61%   76%   91%   99%   99%  100%  
+	    New File  		     937	BorderV.png  0%   92%   92%  100%  
+	    New File  		    2499	Button.png  0%   97%   97%  100%  
+	    New File  		     608	foot.png  0%   89%   89%  100%  
+	    New File  		  353380	page.png  0%   37%   74%   99%   99%  100%  
+	    New File  		  508537	Portrair.png  0%   25%   51%   77%   99%   99%  100%  
+	    New File  		   37043	Portrair25.png  0%   99%   99%  100%  
+	    New File  		  142661	Portrair50.png  0%   91%   99%   99%  100%  
+	    New File  		   94537	portrait.jpg  0%   99%   99%  100%  
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         2         1         1         0         0         0
+   Files :        20        20         0         0         0         0
+   Bytes :    6.30 m    6.30 m         0         0         0         0
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+   Speed :            39144218 Bytes/sec.
+   Speed :            2239.850 MegaBytes/min.
+   Ended : lundi, 10 d‚cembre 2018 08:02:16
+

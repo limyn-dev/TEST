@@ -1,0 +1,63 @@
+<!-- ===============================================================================
+
+   Description:
+      Page based on maquette image.
+   
+   History:
+      07.12.2018 delay.yves@gmail.com : Creation
+      08.12.2018 delay.yves@gmail.com : Add compare button.
+   
+================================================================================ -->
+<HTML>
+<HEAD>
+   <TITLE>Page</TITLE>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <SCRIPT language="javascript">
+      function divPageRefChange() {
+         var elm = document.getElementById("divPageRef")
+         if (elm.className=="PAGE") { elm.className="PAGE_HIDE"; }
+         else                       { elm.className="PAGE"     ; }
+      }
+   </SCRIPT>
+   <LINK rel="stylesheet" type="text/css" href="style.css" />   
+</HEAD>
+<BODY>
+   <TABLE>
+      <TR>
+         <TD>
+            <DIV class="PAGE">
+               <DIV class="B1">Lorem ipsum dolor sit amet, eu falli partem sanctus has, ne vim.</DIV>
+               <DIV class="B2">
+                  <P>Lorem ipsum dolor sit amet, ne cum iisque euripidis, erat nusquam expetendis sea te, purto eleifend dissentias te vix. Duo malorum fierent principes ne. Paulo soluta atomorum vix ut, id has feugait epicuri vituperatoribus, ut quo magna (<SPAN class="T1">impetus quaeque</SPAN>). Ad pri elit placerat necessitatibus, illum sadipscing cu has, mea an accumsan tincidunt. Indoctum inciderint suscipiantur ei mea, agam posse vix no.</P>
+                  <P>Te sanctus minimum vix. Cum in ornatus interesset. Aeterno gubergren vix id. Est liber conclusionemque te. His alterum saperet intellegebat ex, in quod consul nominavi eam, cum quando partem scripta id. Sed ad commune detracto phaedrum, ut vel paulo quaestio mediocritatem, ex vix wisi <SPAN class="T1">nostro mediocritatem</SPAN>.</P>
+               </DIV>
+               <DIV class="B3">
+                  <TABLE class="B3">
+                     <TR>
+                        <TD class="B3L">
+                           <IMG class="B3" align="RIGHT" src="./IMG/Portrair25.png" />
+                        </TD>
+                        <TD class="B3C">
+                           <IMG src="./IMG/BorderV.png"/>
+                        </TD>
+                        <TD class="B3R">
+                           <P><B>Laure Rémipson</B></P>
+                           <P>Facer complectitur ei duo, mazim alienum consectetuer usu ea.</P>
+                        </TD>
+                     </TR>
+                  </TABLE>
+               </DIV>
+               <DIV class="B4" onclick='divPageRefChange()'>
+                  <IMG src="./IMG/Button.png"/>
+               </DIV>
+            </DIV>
+         </TD>
+         <TD>
+            <DIV id="divPageRef" class="PAGE_HIDE">
+               <IMG src="./IMG/page.png" />
+            </DIV>
+         </TD>
+      </TR>
+   </TABLE>
+</BODY>
+<HTML>
