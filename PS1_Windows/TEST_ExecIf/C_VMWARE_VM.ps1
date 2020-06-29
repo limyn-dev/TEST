@@ -1,0 +1,1 @@
+"START command [C_VMWARE_VM.ps1]" | OUT-HOST

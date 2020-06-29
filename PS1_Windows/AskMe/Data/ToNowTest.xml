@@ -1,0 +1,11 @@
+<A>
+   <I> <Q Type="TEXT" >Question1</Q>        <A>Answer1</A> </I>
+   <I> <Q Type="TEXT" >Question2</Q>        <A>Answer2</A> </I>
+   <I> <Q Type="SOUND">ToNowTest\Q3.wav</Q> <A>Answer3</A> </I>
+   <I> <Q Type="TEXT" >Question4</Q>        <A>Answer4</A> </I>   
+   <I> <Q Type="TEXT" >Question5</Q>        <A>Answer5</A> </I>   
+   <I> <Q Type="TEXT" >Question6</Q>        <A>Answer6</A> </I>   
+   <I> <Q Type="TEXT" >Question7</Q>        <A>Answer7</A> </I>   
+   <I> <Q Type="TEXT" >Question8</Q>        <A>Answer8</A> </I>   
+   <I> <Q Type="TEXT" >Question9</Q>        <A>Answer9</A> </I>   
+</A>

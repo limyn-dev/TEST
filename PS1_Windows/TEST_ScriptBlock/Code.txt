@@ -1,0 +1,5 @@
+param($A, $B)
+"From script block:" | OUT-HOST
+"   Variable V [$V]" | OUT-HOST
+"   Param    A [$A]" | OUT-HOST
+"   Param    B [$B]" | OUT-HOST

@@ -1,0 +1,6 @@
+"FIELD_A","FIELD_B","FIELD_C","FIELD_D"
+"AAA_1"  ,"BBB_1"  , "CCC_1" ,"DDD_1"
+"AAA_2"  ,"BBB_2"  , "CCC_2" ,"DDD_2"
+"AAA_3"  ,"BBB_3"  , "aéàè%&","DDD_3"
+"AAA_4"  ,"BBB_4"  , "CCC_4" ,"DDD_4"
+"AAA_5"  ,"BBB_5"  , "CCC_5" ,"DDD_5"

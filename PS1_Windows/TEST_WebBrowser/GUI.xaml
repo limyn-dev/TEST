@@ -1,0 +1,6 @@
+ <Window xmlns                 = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x               = "http://schemas.microsoft.com/winfx/2006/xaml"
+         Title                 = "PowerShell HTML GUI" 
+         WindowStartupLocation = "CenterScreen">
+   <WebBrowser Name="WBR_Main"></WebBrowser>
+</Window>

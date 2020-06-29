@@ -1,0 +1,74 @@
+<Window  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:local="clr-namespace:MyFirstWPF"
+         Title="PowerShell Computer Utility" 
+         Height="350"  
+         Width="525"
+  >
+  <TabControl TabStripPlacement="Top" Margin="0, 0, 0, 10">
+    <TabItem Name="TAB_01" Header="TAB_01">
+      <GroupBox   x:Name="GPB_BUTTONS" 
+                  Header="Buttons"  
+                  VerticalAlignment="Top" 
+                  HorizontalAlignment="Left" 
+                  Margin="10,10,0,0"  
+                  Height="200" 
+                  Width="150"                   
+        >
+        <StackPanel>
+          <Button Content="_OK"/>
+          <Button Content="_Cancel"/>
+        </StackPanel>
+      </GroupBox>        
+    </TabItem>
+    <TabItem Name="TAB_02" Header="TAB_02">
+      <GroupBox   x:Name="GPB_TEXTBOXS" 
+                  Header="Textbox"  
+                  VerticalAlignment="Top" 
+                  HorizontalAlignment="Left" 
+                  Height="200" 
+                  Width="150"                   
+                  Margin="10,10,0,0"  
+        >
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+          </Grid.RowDefinitions>
+          <Label>Default</Label>
+          <TextBox  x:Name                        = "TBX_01" 
+                    TextWrapping                  = "Wrap"    
+            />
+          <Label>Read only</Label>
+          <TextBox  x:Name                        = "TBX_02" 
+                    IsReadOnly                    = "True"  
+                    HorizontalScrollBarVisibility = "Auto"  
+                    VerticalScrollBarVisibility   = "Auto"    
+            />                  
+        </Grid>
+      </GroupBox>
+    </TabItem>
+    <TabItem Name="TAB_03" Header="TAB_03">
+      <GroupBox   x:Name="Results" 
+                  Header="Results"  
+                  HorizontalAlignment="Left" 
+                  Margin="92,61,0,0"  
+                  VerticalAlignment="Top" 
+                  Height="248" 
+                  Width="415"             
+        >
+        
+      </GroupBox>
+    </TabItem>
+    <TabItem Name="TAB_04" Header="TAB_04">
+      <TabItem.Content>Border color property information goes here.</TabItem.Content>
+    </TabItem>
+  </TabControl>
+</Window>

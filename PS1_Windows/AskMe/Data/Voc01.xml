@@ -1,0 +1,58 @@
+<A>
+   <I>
+      <A>mercredi</A>
+      <Q Type="TEXT">1) Je suis le trosième jour de la semaine</Q>
+   </I>
+   <I>
+      <A>matin</A>
+      <Q Type="TEXT">2) Je suis au début de la journée</Q>
+   </I>   
+   <I>
+      <A>nuit</A>
+      <Q Type="TEXT">3) Je suis quand il fait tout noir</Q>
+   </I>   
+   <I>
+      <A>jeudi</A>
+      <Q Type="TEXT">4) Je suis entre mercredi et vendredi</Q>
+   </I>   
+   <I>
+      <A>jour</A>
+      <Q Type="TEXT">5) Je dure 24 heures</Q>
+   </I>   
+   <I>
+      <A>demain</A>
+      <Q Type="TEXT">6) Je suis le jour qui vient après aujourd'hui</Q>
+   </I>   
+   <I>
+      <A>lundi</A>
+      <Q Type="TEXT">7) Je suis le premier jour de la semaine</Q>
+   </I>  
+   <I>
+      <A>samedi</A>
+      <Q Type="TEXT">8) Je suis entre le vendredi et le dimanche</Q>
+   </I>   
+   <I>
+      <A>soir</A>
+      <Q Type="TEXT">9) Je suis à la fin de la journée quand le soleil se couche</Q>
+   </I>   
+   <I>
+      <A>semaine</A>
+      <Q Type="TEXT">10) Je compte 7 jours</Q>
+   </I>   
+   <I>
+      <A>vendredi</A>
+      <Q Type="TEXT">11) Je suis le cinquième jour de la semaine</Q>
+   </I>   
+   <I>
+      <A>midi</A>
+      <Q Type="TEXT">12) Je suis le milieu de la journée</Q>
+   </I>   
+   <I>
+      <A>dimanche</A>
+      <Q Type="TEXT">13) Je suis le dérnier jour de la semaine</Q>
+   </I>
+   <I>
+      <A>hier</A>
+      <Q Type="TEXT">14) Je suis le jour avant celui où l'on est</Q>
+   </I>   
+</A>

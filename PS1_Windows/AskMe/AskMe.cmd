@@ -1,0 +1,1 @@
+powershell.exe /f "%~dp0AskMe.ps1"

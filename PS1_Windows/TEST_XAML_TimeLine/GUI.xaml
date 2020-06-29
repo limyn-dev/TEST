@@ -1,0 +1,30 @@
+
+<Window  xmlns                 = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x               = "http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local           = "clr-namespace:timelines"         
+         Title                 = "MainWindow" 
+         Height                = "600" 
+         Width                 = "1024"  
+         WindowStartupLocation = "CenterScreen" 
+         WindowState           = "Maximized"
+   >
+   <Grid>
+      <StackPanel Orientation="Horizontal">
+         <DataGrid x:Name                   = "DG_MAIN" 
+                   AutoGenerateColumns      = "False" 
+                   AlternationCount         = "2" 
+                   AlternatingRowBackground = "LightBlue"                   
+            >
+            <DataGrid.Columns>
+               <DataGridTextColumn Header="COMPUTERS" Binding="{Binding COMPUTER}" Width="100" />
+               <DataGridTextColumn Header="TASKS"     Binding="{Binding TASK}"     Width="100" />
+            </DataGrid.Columns>
+         </DataGrid>
+         <Grid x:Name = "GD_MAIN" >
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="1440" />
+            </Grid.ColumnDefinitions>
+         </Grid>
+      </StackPanel>
+   </Grid>
+</Window>

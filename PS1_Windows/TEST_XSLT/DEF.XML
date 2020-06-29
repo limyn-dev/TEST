@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<J>
+   <S sName="STEP_01">
+      <F>FctA</F>
+      <P pName="P1" pType="">Value1</P>
+      <P pName="P2" pType="">Value2</P>
+   </S>
+   <S sName="STEP_02" >
+      <F>FctB</F>
+      <P pName="P1" pType="">Value1</P>
+      <P pName="P2" pType="">Value2</P>
+   </S>
+</J>

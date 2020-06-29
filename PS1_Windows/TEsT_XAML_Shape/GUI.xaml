@@ -1,0 +1,22 @@
+
+<Window  xmlns       = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x     = "http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local = "clr-namespace:timelines"         
+         Title       = "MainWindow" 
+         Height      = "350" 
+         Width       = "525"  >
+
+      
+   <Grid>
+      <Canvas x:Name="CNV_BCG">
+         <Rectangle Margin="0" StrokeThickness="0" Height="10" >
+            <Rectangle.Fill><SolidColorBrush Color="RED" /></Rectangle.Fill>
+         </Rectangle>   
+         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hello"/>
+         <StackPanel Margin="0" Height="20" Orientation="Horizontal">
+            <Rectangle  Margin="0" Width="20" Height="10"><Rectangle.Fill><SolidColorBrush Color="BLUE" /></Rectangle.Fill></Rectangle>
+            <Rectangle Margin="0" Width="20" Height="10"><Rectangle.Fill><SolidColorBrush Color="GREEN" /></Rectangle.Fill></Rectangle>
+         </StackPanel>
+      </Canvas>
+   </Grid>
+</Window>

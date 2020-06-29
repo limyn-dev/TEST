@@ -1,0 +1,30 @@
+<LayoutModificationTemplate
+xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"
+xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout"
+xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout"
+xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout"
+Version="1">
+  <LayoutOptions StartTileGroupCellWidth="6" />
+  <DefaultLayoutOverride LayoutCustomizationRestrictionType="OnlySpecifiedGroups">
+    <StartLayoutCollection>
+      <defaultlayout:StartLayout GroupCellWidth="6">
+        <start:Group Name="MY_COMPANY Links">
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="14575485210" DisplayName="" Size="2x2" Column="2" Row="0" Arguments="-pinnedSite -contentTile -formatVersion 0x00000003 -pinnedTimeLow 0x64d1aa5b -pinnedTimeHigh 0x01d34c14 -securityFlags 0x00000000 -tileType 0x00000000 -url 0x0000001a http://pcs10239/collab.htm" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/14575485210/squaretile.png" Wide310x150LogoUri="ms-appx:///" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="false" BackgroundColor="#ff0c4094" ForegroundText="light" />
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="29330462990" DisplayName="" Size="2x2" Column="4" Row="0" Arguments="-pinnedSite -contentTile -formatVersion 0x00000003 -pinnedTimeLow 0xcfafd24a -pinnedTimeHigh 0x01d34c14 -securityFlags 0x00000000 -tileType 0x00000000 -url 0x0000001c http://pcs10239/intranet.htm" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/29330462990/squaretile.png" Wide310x150LogoUri="ms-appdata:///local/PinnedTiles/29330462990/widetile.png" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="true" BackgroundColor="#ff0193d7" ForegroundText="light" />
+          <start:SecondaryTile AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" TileID="19756397160" DisplayName="" Size="2x2" Column="0" Row="0" Arguments="-pinnedSite -contentTile -formatVersion 0x00000003 -pinnedTimeLow 0xb3b2d139 -pinnedTimeHigh 0x01d34c14 -securityFlags 0x00000000 -tileType 0x00000000 -url 0x00000017 http://pcs10239/ICT.htm" Square150x150LogoUri="ms-appdata:///local/PinnedTiles/19756397160/squaretile.png" Wide310x150LogoUri="ms-appx:///" ShowNameOnSquare150x150Logo="true" ShowNameOnWide310x150Logo="false" BackgroundColor="#ff0193d7" ForegroundText="light" />
+          <start:DesktopApplicationTile Size="2x2" Column="0" Row="2" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\IBM Applications\IBM Notes.lnk" />
+        </start:Group>
+        </start:Group>
+      </defaultlayout:StartLayout>
+    </StartLayoutCollection>
+  </DefaultLayoutOverride>
+    <CustomTaskbarLayoutCollection PinListPlacement="Replace">
+      <defaultlayout:TaskbarLayout>
+        <taskbar:TaskbarPinList>
+          <taskbar:UWA AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" />
+          <taskbar:DesktopApp DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\System Tools\File Explorer.lnk" />
+          <taskbar:DesktopApp DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\Accessories\Internet Explorer.lnk"/>
+        </taskbar:TaskbarPinList>
+      </defaultlayout:TaskbarLayout>
+    </CustomTaskbarLayoutCollection>
+</LayoutModificationTemplate>
