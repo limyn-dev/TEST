@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<PATCH>		  
+    <KEY>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\Test_0009\DisplayName</KEY>
+	<CMD>Test_0009.exe</CMD>
+</PATCH>

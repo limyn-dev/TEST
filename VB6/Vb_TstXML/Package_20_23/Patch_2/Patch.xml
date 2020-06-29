@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<PATCH>
+	<KEY>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\IE40\DisplayName</KEY>
+	<CMD>iexplore</CMD>
+</PATCH>

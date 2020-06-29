@@ -1,0 +1,10 @@
+Form1 = 96, 96, 868, 565, I, 72, 72, 844, 541, C
+APIMouse = 168, 168, 1391, 921, 
+APIMenu = 210, 210, 1433, 963, 
+APIListeBox = 252, 252, 1475, 1005, 
+APIEditCtrl = 294, 294, 1517, 1047, 
+APIComboBox = 336, 336, 1559, 1089, 
+APIButton = 0, 0, 1223, 753, 
+APIWndBroose = 42, 42, 1265, 795, C
+CWndsLocal = 84, 84, 1307, 837, 
+CWndLocal = 126, 126, 1349, 879, Z

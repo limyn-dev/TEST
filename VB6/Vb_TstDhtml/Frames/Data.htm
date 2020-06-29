@@ -1,0 +1,39 @@
+<HTML>
+  <HEAD>
+    <TITLE>Test de size d'une frame</TITLE>
+    <script type="text/javascript">
+	function disableResize()
+	  {
+	  parent.document.getElementById("myLeftFrame").noResize=true
+	  parent.document.getElementById("myRightFrame").noResize=true
+	  }
+	function enableResize()
+	  {
+	  parent.document.getElementById("myLeftFrame").noResize=false
+	  parent.document.getElementById("myRightFrame").noResize=false
+	  }
+	function newSrc()
+	  {
+	  if (parent.document.getElementById("myLeftFrame").src=="about:blanc")
+	    {
+	    parent.document.getElementById("myLeftFrame").src="Data.htm"
+	    parent.document.getElementById("myRightFrame").src="about:blanc"
+	    }
+	  else
+		{
+	    parent.document.getElementById("myLeftFrame").src="about:blanc"
+	    parent.document.getElementById("myRightFrame").src="Data.htm"
+	    }	  
+	  //document.write("") 
+	  }
+	</script>
+  </HEAD>
+  <BODY>
+    <P>
+      <FORM id=FORM1 name=FORM1>
+        <INPUT id=button1 name=button1 onclick=disableResize() type=button value="No resize"> 
+        <INPUT id=button2 name=button2 onclick=enableResize()  type=button value="Resize">
+        <INPUT id=button3 name=button3 onclick=newSrc()        type=button value="Sources">  
+      </FORM>
+  </BODY>
+</HTML>

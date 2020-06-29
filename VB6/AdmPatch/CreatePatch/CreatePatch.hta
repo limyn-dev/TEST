@@ -1,0 +1,96 @@
+<HTML xmlns:v="urn:schemas-microsoft-com:vml" XMLNS:t="urn:schemas-microsoft-com:time">
+  <HEAD>
+    <HTA:APPLICATION
+      APPLICATIONNAME="Context switch"
+	   BORDER="thick" | "dialog" | "none"  | "thin"
+	   BORDERSTYLE="normal" | "complex" | "raised"  | "static"  | "sunken"
+	   CAPTION="yes" 
+		CONTEXTMENU="yes"
+	   ID="oHTA" alert(oHTA.applicationName);
+	   INNERBORDER="yes" 
+		MAXIMIZEBUTTON="no" 
+		MINIMIZEBUTTON="no"
+	   NAVIGABLE="no" 
+		SCROLL="no" 
+		SCROLLFLAT="no"
+	   SELECTION="yes" 
+		SHOWINTASKBAR="yes" 
+		SINGLEINSTANCE="no"
+	   SYSMENU="yes" 
+		VERSION="0.5"
+	   WINDOWSTATE="normal" | "maximize" | "minimize">
+    <BASEFONT color="#000000" face="Arial" size="5" >
+	 <SCRIPT language=vbscript>
+      Option explicit
+
+
+
+      ' Events
+		'________________________________________________________________________________________________________________
+		Sub BodyOnLoad()
+      End Sub
+	
+
+
+
+		'  Result writing
+		'________________________________________________________________________________________________________________		
+		Private Sub WriteInfo(sMessage)
+		   celResult.InsertAdjacentHTML "BeforeEnd", "<BR><FONT size=""3"" color=""#000000"">" & sMessage & "</FONT>"  
+		End Sub
+		Private Sub WriteValide(sResult, sDescript)
+			Dim sHtm
+
+			Select Case UCase(sResult)
+				Case RSL_VLD:	sHtm = "<FONT size=""3"" color=""#006400""> - Passed</FONT>"
+				Case RSL_ERR:	sHtm = "<FONT size=""3"" color=""#8B0000""> - <B>Failed</B></FONT>"
+				Case Else:		sHtm = ""
+			End Select
+
+			If sDescript ="" Then
+				celResult.InsertAdjacentHTML "BeforeEnd", sHtm 
+			Else
+				celResult.InsertAdjacentHTML "BeforeEnd", sHtm & "<BR><PRE { text-indent: 3em }><TEXT>        - " & sDescript & "</TEXT></PRE></FONT>" 
+			End If
+
+		End Sub
+
+
+
+
+    </SCRIPT>
+
+  </HEAD>
+  <BODY background="html/footer1.gif" onload="vbscript:BodyOnLoad">
+    <CENTER>
+      <TABLE height="100%" width="100%" border="0">
+		  <!------ Title row ------------------------------------------------------------------------------------------->
+		  <TR height="20%">
+		    <TD width="15%" valign="center" align="center">
+			   <B><FONT size="5"><IMG border="0" src="html/smallfine.gif" align="left" width="96" height="60"></FONT></B>
+			 </TD>
+          <TD width="70%" valign="center" align="center">
+				  <FONT size="6" face="Arial">Fine environnement setup</FONT>
+		    </TD>
+          <TD width="15%" valign="center" align="center">
+			   <img border="0" src="html/logo.jpg" align="center">
+			 </TD>
+		  </TR>
+		  <!------ Main row -------------------------------------------------------------------------------------------->
+		  <TR height="40%">
+		    <TD></TD>
+		    <TD id="celMain" align="center" border="1">
+			   <P><B>Patch file: </B><INPUT id="txtFic" type="file"></P>
+	       </TD>
+			 <TD></TD>
+		  </TR>
+		  <!------ Foot row -------------------------------------------------------------------------------------------->
+		  <TR height="40%">
+		    <TD></TD>
+		    <TD id="celResult" align="left" valign="top" bgcolor="#FFFFFF"></TD>
+			 <TD></TD>
+		  </TR>
+	   <TABLE>
+    </CENTER>
+  </BODY>
+</HTML>

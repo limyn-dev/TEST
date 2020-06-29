@@ -1,0 +1,141 @@
+
+@media Print    
+{
+BODY {
+	BACKGROUND: #ffffff; COLOR: #000000
+}
+A:link {
+	COLOR: #000000
+}
+A:visited {
+	COLOR: #000000
+}
+A:hover {
+	COLOR: #000000
+}
+A:active {
+	COLOR: #000000
+}
+A.def:link {
+	COLOR: #000000
+}
+A.def:visited {
+	COLOR: #000000
+}
+A.def:hover {
+	COLOR: #000000
+}
+A.def:active {
+	COLOR: #000000
+}
+H1 {
+	TEXT-ALIGN: center
+}
+H2 {
+	TEXT-ALIGN: left
+}
+H3 {
+	TEXT-ALIGN: left
+}
+H4 {
+	TEXT-ALIGN: left
+}
+H5 {
+	TEXT-ALIGN: left
+}
+H6 {
+	TEXT-ALIGN: left
+}
+.center {
+	TEXT-ALIGN: center
+}
+.left {
+	TEXT-ALIGN: left
+}
+.new {
+	COLOR: #000000
+}
+CODE .kw {
+	COLOR: #000000
+}
+CODE .com {
+	COLOR: #000000
+}
+UL {
+	LIST-STYLE: square outside
+}
+UL UL {
+	LIST-STYLE: disc outside
+}
+
+}
+
+@media Screen    
+{
+BODY {
+	BACKGROUND: #ffffff
+}
+    }
+color:unknown #000000 A:link {
+	COLOR: #0000ff
+}
+A:visited {
+	COLOR: #007700
+}
+A:hover {
+	COLOR: #ff0000
+}
+A:active {
+	COLOR: #bbbb00
+}
+A.def:link {
+	COLOR: #000000
+}
+A.def:visited {
+	COLOR: #000000
+}
+A.def:hover {
+	COLOR: #ff0000
+}
+A.def:active {
+	COLOR: #bbbb00
+}
+H1 {
+	TEXT-ALIGN: center
+}
+H2 {
+	TEXT-ALIGN: left
+}
+H3 {
+	TEXT-ALIGN: left
+}
+H4 {
+	TEXT-ALIGN: left
+}
+H5 {
+	TEXT-ALIGN: left
+}
+H6 {
+	TEXT-ALIGN: left
+}
+.center {
+	TEXT-ALIGN: center
+}
+.left {
+	TEXT-ALIGN: left
+}
+.new {
+	COLOR: #ff0000
+}
+CODE .kw {
+	COLOR: #000079
+}
+CODE .com {
+	COLOR: #790079
+}
+UL {
+	LIST-STYLE: square outside
+}
+UL UL {
+	LIST-STYLE: disc outside
+}

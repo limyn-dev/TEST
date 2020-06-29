@@ -1,0 +1,60 @@
+STYLE TYPEtextcss BODY {
+	BACKGROUND: white fixed no-repeat; MARGIN-LEFT: 0px; MARGIN-TOP: 0px
+}
+.gradient {
+	HEIGHT: 507px; LEFT: 0px; POSITION: absolute; TOP: 0px; WIDTH: 800px; Z-INDEX: -9999
+}
+.dropshadow {
+	LEFT: 0px; POSITION: absolute; TOP: 0px; Z-INDEX: -9995
+}
+.titlebar {
+	LEFT: 0px; POSITION: absolute; TOP: 0px; Z-INDEX: -9999
+}
+.leftpane {
+	LEFT: 0px; POSITION: absolute; TOP: 0px; VISIBILITY: hidden; Z-INDEX: -9000
+}
+.pageTitle {
+	COLOR: #990000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: large; HEIGHT: 32px; LEFT: 180px; POSITION: absolute; TEXT-ALIGN: left; TOP: 0px; WIDTH: 618px
+}
+.contents {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: x-small; HEIGHT: 360px; LEFT: 220px; OVERFLOW: auto; POSITION: absolute; TOP: 44px; WIDTH: 570px
+}
+.mousecontents {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: x-small; HEIGHT: 360px; LEFT: 220px; OVERFLOW: auto; POSITION: absolute; TOP: 44px; WIDTH: 300px
+}
+.blackBar {
+	COLOR: #7a5f44; HEIGHT: 1px; LEFT: 15px; POSITION: absolute; TOP: 12px; WIDTH: 485px; Z-INDEX: -500
+}
+.cancelButton {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 10px; POSITION: absolute; VISIBILITY: hidden
+}
+.cancelButtonText {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 10px; POSITION: absolute; TEXT-ALIGN: right; TOP: 6px; VISIBILITY: hidden
+}
+.restoreButton {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 109px; POSITION: absolute; VISIBILITY: hidden
+}
+.restoreButtonText {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 119px; POSITION: absolute; TOP: 6px; VISIBILITY: hidden
+}
+.backButton {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 400px; POSITION: absolute; VISIBILITY: hidden
+}
+.backButtonText {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 400px; POSITION: absolute; TEXT-ALIGN: right; TOP: 6px; VISIBILITY: hidden
+}
+.nextButton {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 470px; POSITION: absolute; VISIBILITY: hidden
+}
+.nextButtonText {
+	CURSOR: hand; FONT-FAMILY: MS Sans Serif; FONT-SIZE: 8pt; LEFT: 480px; POSITION: absolute; TOP: 6px; VISIBILITY: hidden
+}
+.navbar {
+	HEIGHT: 25px; LEFT: 220px; POSITION: absolute; TOP: 465px; WIDTH: 570px
+}
+.fontStyle {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: x-small
+}
+.navInfo {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: x-small; HEIGHT: 50px; LEFT: 220px; POSITION: absolute; TOP: 410px; WIDTH: 570px
+}

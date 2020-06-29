@@ -1,0 +1,45 @@
+A window class is a set of attributes that the system uses as a template to create a window. 
+Every window is a member of a window class. All window classes are process specific. 
+
+typedef struct _WNDCLASS { 
+    UINT       style; 
+    WNDPROC    lpfnWndProc; 
+    int        cbClsExtra; 
+    int        cbWndExtra; 
+    HINSTANCE  hInstance; 
+    HICON      hIcon; 
+    HCURSOR    hCursor; 
+    HBRUSH     hbrBackground; 
+    LPCTSTR    lpszMenuName; 
+    LPCTSTR    lpszClassName; 
+} WNDCLASS, *PWNDCLASS; 
+
+typedef struct _WNDCLASSEX { 
+    UINT       cbSize; 
+    UINT       style; 
+    WNDPROC    lpfnWndProc; 
+    int        cbClsExtra; 
+    int        cbWndExtra; 
+    HINSTANCE  hInstance; 
+    HICON      hIcon; 
+    HCURSOR    hCursor; 
+    HBRUSH     hbrBackground; 
+    LPCTSTR    lpszMenuName; 
+    LPCTSTR    lpszClassName; 
+    HICON      hIconSm; 
+} WNDCLASSEX, *PWNDCLASSEX; 
+
+GetClassInfo 	 Retrieves information about a window class. 
+GetClassInfoEx 	 Retrieves information about a window class, including a handle to its small icon. 
+GetClassLong 	 Retrieves the specified 32-bit value from the WNDCLASSEX structure associated with the specified window. 
+GetClassLongPtr  Retrieves the specified value from the WNDCLASSEX structure associated with the specified window. 
+GetClassName 	 Retrieves the name of the class to which the specified window belongs. 
+GetWindowLong 	 Retrieves information about the specified window. 
+GetWindowLongPtr Retrieves information about the specified window. 
+RegisterClass    Registers a window class. 
+RegisterClassEx  Registers a window class. 
+SetClassLong     Replaces the specified 32-bit value at the specified offset into the extra class memory or the WNDCLASSEX structure. 
+SetClassLongPtr  Replaces the specified value at the specified offset into the extra class memory or the WNDCLASSEX structure. 
+SetWindowLong    Changes an attribute of the specified window. 
+SetWindowLongPtr Changes an attribute of the specified window. 
+UnregisterClass  Unregisters a window class. 

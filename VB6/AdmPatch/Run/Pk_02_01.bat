@@ -1,0 +1,1 @@
+WScript D:\Projets\Vb_TstXML\tstXML.vbs D:\Projets\Vb_TstXML\Pk_02_01

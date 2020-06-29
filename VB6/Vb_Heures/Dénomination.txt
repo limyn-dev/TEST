@@ -1,0 +1,6 @@
+Entités			Objet	Collections	Tables
+-----------------------------------------------------------------
+Type d'intervention	TIv	TsIv		tblTIv
+Intervention		Ivn	Ivns		tblIvn
+Action			Act	Acts		tblAct
+Opération		Opr	Oprs		tblOpr

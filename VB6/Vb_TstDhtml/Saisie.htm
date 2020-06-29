@@ -1,0 +1,23 @@
+<HTML>
+  <HEAD>
+    <TITLE>Test de saisie de formulaire</TITLE>
+    <script type="text/javascript">
+    function getElements()
+      {
+      document.write("Texte1: " + document.getElementsByName("myInput1").value + "<BR>")
+      document.write("Texte2: " + document.getElementsByName("myInput2").toString + "<BR>")
+      document.write("Texte3: " + document.getElementsByName("myInput3").toString + "<BR>")      
+      }
+    </script>
+  </HEAD>
+  <BODY>
+    <FORM>
+      Text1: <INPUT name="myInput1" type="text" value="myInput1"><BR>
+      Text2: <INPUT name="myInput2" type="text" value="myInput2"><BR>
+      Text3: <INPUT name="myInput3" type="text" value="myInput3"><BR>
+      <BR>
+      <INPUT name="mybutton" type="button" onclick="getElements()" value="Saisie">
+    </FORM>
+  </BODY>
+</HTML>
+

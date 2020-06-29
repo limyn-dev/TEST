@@ -1,0 +1,23 @@
+<html>
+  <HEAD>
+    <TITLE>Test de prompt</TITLE>
+    <script type="text/javascript">
+    function questionner()
+	  {
+      var txt = prompt("Saisisez vôtre text:","ici le text")
+      if (txt != null && txt != "")
+        {
+        document.write("Vôtre saisie: " + txt)
+        }
+      }
+    </script>
+  </HEAD>
+  <BODY>
+    <FORM action="about:blank">
+      <P>
+      Pour Saisir du texte, pressez sur le boutton <BR>
+      <INPUT type="button" value="Questionner" onclick="questionner()">
+      </P>
+    </FORM>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script type="text/javascript">
+    function formAction()
+	  {
+	  var x=document.forms.myForm.mySelect
+	  alert(x.options[x.selectedIndex].text)
+	  }
+	</script>
+  </head>
+  <body>
+    <form name="myForm">
+	  <select name="mySelect">
+	    <option>Apple</option>
+	    <option>Banana</option>
+	    <option>Orange</option>
+	  </select>
+	  <input type="button" onclick="formAction()" value="Show Text">
+    </form>
+  </body>
+</html>
+
