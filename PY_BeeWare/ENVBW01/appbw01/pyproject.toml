@@ -1,0 +1,45 @@
+[build-system]
+requires = ["briefcase"]
+
+[tool.briefcase]
+project_name = "APPBW01"
+bundle = "ch.limyn"
+version = "0.0.1"
+url = "http://limyn.ch"
+license = "Proprietary"
+author = 'limyn.yves@outlook.com'
+author_email = "limyn.yves@outlook.com"
+
+[tool.briefcase.app.appbw01]
+formal_name = "APPBW01"
+description = "Beeware test application"
+icon = "src/appbw01/resources/appbw01"
+sources = ['src/appbw01']
+requires = []
+
+
+[tool.briefcase.app.appbw01.macOS]
+requires = [
+    'toga-cocoa>=0.3.0.dev18',
+]
+
+[tool.briefcase.app.appbw01.linux]
+requires = [
+    'toga-gtk>=0.3.0.dev18',
+]
+
+[tool.briefcase.app.appbw01.windows]
+requires = [
+    'toga-winforms>=0.3.0.dev18',
+]
+
+# Mobile deployments
+[tool.briefcase.app.appbw01.iOS]
+requires = [
+    'toga-iOS>=0.3.0.dev18',
+]
+
+[tool.briefcase.app.appbw01.android]
+requires = [
+    'toga-android>=0.3.0.dev18',
+]

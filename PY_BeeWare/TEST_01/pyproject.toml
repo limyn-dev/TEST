@@ -1,0 +1,45 @@
+[build-system]
+requires = ["briefcase"]
+
+[tool.briefcase]
+project_name = "LIMYN-T01"
+bundle = "limyn.t1"
+version = "0.0.1"
+url = "https://t1.limyn/limynt01"
+license = "Proprietary"
+author = 'Yves'
+author_email = "limyn.yves@outlook.com"
+
+[tool.briefcase.app.limynt01]
+formal_name = "LIMYN-T01"
+description = "LIMYN Test app 01"
+icon = "src/limynt01/resources/limynt01"
+sources = ['src/limynt01']
+requires = []
+
+
+[tool.briefcase.app.limynt01.macOS]
+requires = [
+    'toga-cocoa>=0.3.0.dev18',
+]
+
+[tool.briefcase.app.limynt01.linux]
+requires = [
+    'toga-gtk>=0.3.0.dev18',
+]
+
+[tool.briefcase.app.limynt01.windows]
+requires = [
+    'toga-winforms>=0.3.0.dev18',
+]
+
+# Mobile deployments
+[tool.briefcase.app.limynt01.iOS]
+requires = [
+    'toga-iOS>=0.3.0.dev18',
+]
+
+[tool.briefcase.app.limynt01.android]
+requires = [
+    'toga-android>=0.3.0.dev18',
+]
