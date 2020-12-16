@@ -13,8 +13,8 @@ $global:ErrorActionPreference = "SilentlyContinue"                              
                       $script:SPH = Split-Path -Path $script:SPH -Parent            #
 [int]                 $script:LGW = 300                                             # Root with
 [hashtable]           $script:LGR = @{}                                             # Root logs
-                      $script:LGR.Add('W8'  , "$($env:programdata)\ICRC\Logs" )     #
-                      $script:LGR.Add('F2K8', 'C:\ICRC\Logs\Installation'     )     #
+                      $script:LGR.Add('W8'  , "$($env:programdata)\CHK\Logs" )     #
+                      $script:LGR.Add('F2K8', 'C:\CHK\Logs\Installation'     )     #
 [string]              $script:LG2 = ""                                              # Script log
 [string]              $script:LOG = ""                                              # Script log
 [int]                 $script:RTC = 0                                               #
@@ -22,7 +22,7 @@ $global:ErrorActionPreference = "SilentlyContinue"                              
 [System.Data.DataSet] $script:DTS = $null                                           # Data source object
 [hashtable]           $script:LST = @{}                                             # Steps list
 [object]              $script:STP = $null                                           # Current step object
-[string]              $script:TGR = 'HKLM:\Software\ICRC\Packages'                  #
+[string]              $script:TGR = 'HKLM:\Software\CHK\Packages'                  #
 #                                                                                   -----------------------------------
 # FUNCTIONS
 #

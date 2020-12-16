@@ -21,34 +21,39 @@ namespace CHK
 /* CLASS CPSEdit */
 public partial class CHKEdit : Form
 {
+   #region    ********** [ LITERALS    ] ******************************************************************************
+   //                                                                               -----------------------------------
+   private string myFDF  = "seq files (*.seq)|*.seq|All files (*.*)|*.*"         ;  // File dialog filter
+   //                                                                               -----------------------------------
+   #endregion *********************************************************************************************************
    #region    ********** [ MEMBERS     ] ******************************************************************************
    //                                                                               -----------------------------------
-   private string                      myPTH = ""                                ;  //
-   private Dictionary<string, Control> myCTL = new Dictionary<string, Control>() ;  //
-   private TextBox                     myTBL = new TextBox()      {Name="TBXL"}  ;  // Log TextBox
-   private CTemplates                  myTPL = null                              ;  // Template object
-   private TreeView                    myTTV = new TreeView()     {Name="TRVT"}  ;  // Template TreeView
-   private DataGridView                myTDV = new DataGridView() {Name="DGVT"}  ;  // Template DataGridView
-   private CSequence                   mySQC = null                              ;  // Sequence object
-   private TreeView                    mySTV = new TreeView()     {Name="TRVS"}  ;  // Sequence TreeView
-   private DataGridView                mySDV = new DataGridView() {Name="DGVS"}  ;  // Sequence DataGridView
+   private string                     myTPH  = ""                                ;  // Template path
+   private Dictionary<string,Control> myCTL  = new Dictionary<string,Control>()  ;  //
+   private TextBox                    myTBL  = new TextBox()      {Name="TBXL"}  ;  // Log TextBox
+   private CTemplates                 myTPL  = null                              ;  // Template object
+   private TreeView                   myTTV  = new TreeView()     {Name="TRVT"}  ;  // Template TreeView
+   private DataGridView               myTDV  = new DataGridView() {Name="DGVT"}  ;  // Template DataGridView
+   private CSequence                  mySQC  = null                              ;  // Sequence object
+   private TreeView                   mySTV  = new TreeView()     {Name="TRVS"}  ;  // Sequence TreeView
+   private DataGridView               mySDV  = new DataGridView() {Name="DGVS"}  ;  // Sequence DataGridView
    //                                                                               -----------------------------------
    #endregion *********************************************************************************************************
    #region    ********** [ CONSTRUCT   ] ******************************************************************************
-   public                  CHKEdit()               {
+   public                  CHKEdit  (                                            )  {
       /*----------------------------------------------------------------------------*/
       /*----------------------------------------------------------------------------*/
       //                                                                            -----------------------------------
       myGUI_Init()                                                               ;  // Ini gui
       //                                                                            -----------------------------------
-      myPTH = System.IO.Path.GetDirectoryName(Application.ExecutablePath)        ;  // Set templates path
-      myPTH = myPTH + "\\Templates"                                              ;  //
-      CL.Trace("Templates path [" + myPTH + "]")                                 ;  //
+      myTPH = System.IO.Path.GetDirectoryName(Application.ExecutablePath)        ;  // Set templates path
+      myTPH = myTPH + "\\Templates"                                              ;  //
+      CL.Trace("Templates path [" + myTPH + "]")                                 ;  //
       //                                                                            -----------------------------------
-      myTPL = new CTemplates(myPTH, myTTV, myTDV)                                ;  // Init Ctemplate
+      myTPL = new CTemplates(myTPH, myTTV, myTDV)                                ;  // Init Ctemplate
       //                                                                            -----------------------------------
    }
-   protected override void Dispose(bool disposing) {
+   protected override void Dispose  (bool disposing                              )  {
       /*----------------------------------------------------------------------------*/
       /*----------------------------------------------------------------------------*/
       if (disposing) {                                                              //
@@ -60,55 +65,75 @@ public partial class CHKEdit : Form
    }
    #endregion *********************************************************************************************************
    #region    ********** [ MENU EVENTS ] ******************************************************************************
-   void Menu_Click(Object sender, EventArgs e) {
+   void Menu_Click                  (Object sender, EventArgs e                  )  {
       /*----------------------------------------------------------------------------*
        *----------------------------------------------------------------------------*/
-      ToolStripMenuItem I = (ToolStripMenuItem)sender                            ;  // Retrive menu item
-      string            F = ""                                                   ;  // Retrive menu item
+      ToolStripMenuItem I = (ToolStripMenuItem)sender                            ;  // Retrieve menu item
+      string            A = I.Text.ToUpper().Replace(" ", "_")                   ;  // Retrieve action
+      string            F = ""                                                   ;  // Retrieve menu item
+      //                                                                            -----------------------------------
+      if (A == "FILE") { return;                                                 }  // Unmanaged events
       //                                                                            -----------------------------------
       CL.TraceEvent()                                                            ;  // Trace evnet
       //                                                                            -----------------------------------
-      switch (I.Text.ToUpper())                                                  {  // Event action
-         case "NEW SEQUENCE" : SEQ_New()                 ;                 break ;  //
-         case "OPEN SEQUENCE"                                                    :  //    Open sequence file
-            F = myGUI_File_Get()                                                 ;  //
-            if (F != ""){ mySQC = new CSequence(myTPL, F, mySTV, mySDV)          }  //
+      switch (A)                                                                 {  // Event action
+         case "NEW_SEQUENCE"                                                     :  //    New sequence
+            F =  myTPH + "\\_NewSeq.xml"                                         ;  //
+            mySQC = new CSequence(myTPL, F, mySTV, mySDV)                        ;  //
             break                                                                ;  //
-         case "SAVE SEQUENCE"                                                    :  //    Save sequence file
-            mySQC.Save()                                                         ;  //
+         case "OPEN_SEQUENCE"                                                    :  //    Open sequence file
+            F = myGUI_File_Open()                                                ;  //
+            if (F != "")                                                         {  //
+               this.Text=F; mySQC = new CSequence(myTPL, F, mySTV, mySDV);       }  //
             break                                                                ;  //
-         case "SAVEAS SEQUENCE"                                                  :  //    Save as sequence file
-            F = myGUI_File_Get()                                                 ;  //
-            if (F != ""){ mySQC.Save(F);                                         }  //
+         case "SAVE_SEQUENCE"                                                    :  //    Save sequence file
+            mySQC.DbSave()                                                       ;  //
+            break                                                                ;  //
+         case "SAVE_SEQUENCE_AS"                                                 :  //    Save as sequence file
+            F = myGUI_File_Save()                                                ;  //
+            if (F != "")                                                         {  //
+               this.Text=F; mySQC.DbSave(F);                                     }  //
             break                                                                ;  //            
-         case "MAKE SCRIPT"                                                      :  //    Make script
-            mySQC.PS1_Make()                                                     ;  //
+         case "MAKE_SCRIPT"                                                      :  //    Make script
+            mySQC.PS1Make()                                                      ;  //
             break                                                                ;  //
          default                                                                 :  //
-            CL.Trace("Unknow action")                                            ;  //
+            CL.Trace("Unknow action [" + A + "]")                                ;  //
             break                                                                ;  //
       }                                                                             //
       //                                                                            -----------------------------------
    }
    #endregion *********************************************************************************************************
-   #region    ********** [ EVENTS      ] ******************************************************************************
-   #endregion *********************************************************************************************************
    #region    ********** [ PRIVATE GUI ] ******************************************************************************
-   private string myGUI_File_Get    (                                            ) {
+   private string myGUI_File_Open   (                                            )  {
       /*----------------------------------------------------------------------------*
        *----------------------------------------------------------------------------*/
       OpenFileDialog O   = new OpenFileDialog()                                  ;  //
       string         F   = ""                                                    ;  //
       //                                                                            -----------------------------------
-      O.InitialDirectory = "c:\\"                                                ;  //
-      O.Filter           = "All files (*.*)|*.*"                                 ;  //
-      O.FilterIndex      = 2                                                     ;  //
+      O.Filter           = myFDF                                                 ;  //
+      O.FilterIndex      = 1                                                     ;  //
       O.RestoreDirectory = true                                                  ;  //
-      if (O.ShowDialog() == DialogResult.OK) { F = O.FileName  ;                 }  //
+      if (O.ShowDialog() == DialogResult.OK)                                     {  //
+         F = O.FileName;                                                         }  //
       //                                                                            -----------------------------------
       return F                                                                   ;  //
    }
-   private void   myGUI_Init_Menu   (                                            ) {
+   private string myGUI_File_Save   (                                            )  {
+      /*----------------------------------------------------------------------------*
+       *----------------------------------------------------------------------------*/   
+      SaveFileDialog O = new SaveFileDialog()                                    ;  //
+      string         F = ""                                                      ;  //
+      //                                                                            ----------------------------------- 
+      O.Filter           = myFDF                                                 ;  //
+      O.FilterIndex      = 1                                                     ;  //
+      O.RestoreDirectory = true                                                  ;  //
+      if(O.ShowDialog() == DialogResult.OK)                                      {  //
+         F=O.FileName;                                                           }  //
+      //                                                                            -----------------------------------
+      return F                                                                   ;  //
+   }
+   private void   myGUI_Init_Menu   (                                            )  {
       /*----------------------------------------------------------------------------*
        * Initialize graphical components. This function is called by the class      *
        * constructor CPSEdit.                                                       *
@@ -118,10 +143,11 @@ public partial class CHKEdit : Form
       //                                                                            -----------------------------------
       L = new Dictionary<int, ToolStripMenuItem>()                               ;  //
       L.Add(0, new ToolStripMenuItem("File"))                                    ;  // Create menuitems
-      L.Add(1, new ToolStripMenuItem("New Sequence") )                           ;  //
-      L.Add(2, new ToolStripMenuItem("Open Sequence"))                           ;  //
-      L.Add(3, new ToolStripMenuItem("Save Sequence"))                           ;  //
-      L.Add(4, new ToolStripMenuItem("Make Script"))                             ;  //
+      L.Add(1, new ToolStripMenuItem("New Sequence"    ))                        ;  //
+      L.Add(2, new ToolStripMenuItem("Open Sequence"   ))                        ;  //
+      L.Add(3, new ToolStripMenuItem("Save Sequence"   ))                        ;  //
+      L.Add(4, new ToolStripMenuItem("Save Sequence As"))                        ;  //
+      L.Add(5, new ToolStripMenuItem("Make Script"     ))                        ;  //
       //                                                                            -----------------------------------
       for (int I=0; I<L.Count; I++)                                              {  // Set event handler
          L[I].Click += new EventHandler(this.Menu_Click);                        }  //
@@ -133,16 +159,18 @@ public partial class CHKEdit : Form
       L[0].DropDownItems.Add(L[1])                                               ;  //    Add New Sequence
       L[0].DropDownItems.Add(L[2])                                               ;  //    Add Open Sequence
       L[0].DropDownItems.Add(L[3])                                               ;  //    Add Save Sequence
-      L[0].DropDownItems.Add(L[3])                                               ;  //    Add Make Check
+      L[0].DropDownItems.Add(L[4])                                               ;  //    Add Save Sequence As
+      L[0].DropDownItems.Add(L[5])                                               ;  //    Add Make Check
       //                                                                            -----------------------------------
       this.Controls.Add(M)                                                       ;  // Update windows
       //                                                                            -----------------------------------
    }
-   private void   myGUI_Init        (                                            ) {
+   private void   myGUI_Init        (                                            )  {
       /*----------------------------------------------------------------------------*
        * Initialize graphical components. This function is called by the class      *
        * constructor CPSEdit.                                                       *
        *----------------------------------------------------------------------------*/
+      Font oFnt = new Font("Consolas", 12.0f); 
       //                                                                            -----------------------------------
       myCTL.Add("TAB0", new TabControl()              {Name="TAB0"}  )           ;  // Create Main TabControl
       myCTL.Add("TBPS", new TabPage()                 {Name="TBPS"}  )           ;  // Create Sequence TabPage
@@ -182,6 +210,7 @@ public partial class CHKEdit : Form
       myCTL["TBPS"].Text                  = "SEQUENCE"                           ;  //
       myCTL["TBPT"].Text                  = "TEMPLATES"                          ;  //
       myCTL["TBPL"].Text                  = "LOG"                                ;  //
+      ((TextBox)myCTL["TBXL"]).Font       = oFnt                                 ;  //
       ((TextBox)myCTL["TBXL"]).Multiline  = true                                 ;  //
       ((TextBox)myCTL["TBXL"]).ScrollBars = System.Windows.Forms.ScrollBars.Both ;  //
       //                                                                            -----------------------------------
@@ -194,8 +223,6 @@ public partial class CHKEdit : Form
       CL.Start(myTBL)                                                            ;  // Start log
       //                                                                            -----------------------------------
    }
-   #endregion *********************************************************************************************************
-   #region    ********** [ PRIVATE APP ] ******************************************************************************
    #endregion *********************************************************************************************************
    #region    ********** [ ENTRY POINT ] ******************************************************************************
    [STAThread]

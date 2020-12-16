@@ -37,7 +37,6 @@ public DataTable TableTemplate { get { return myDST.Tables["TEMPLATE"] ; } }
 public DataTable TableVariable { get { return myDST.Tables["VARIABLE"] ; } }   
 #endregion 
 #region ********** PUBLIC                 ********************************************
-public void ScriptMake (string sScriptPath = "") { myScriptMake(sScriptPath) ; }
 public void Save       ()                        { myDstSave()               ; }
 #endregion 
 #region ********** PRIVATE DataSet        ********************************************

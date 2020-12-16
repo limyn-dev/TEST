@@ -55,7 +55,7 @@ private void myDstInit            (string sFile)                                
    // Lg(" - Open [" + sFle + "]")                                               ;  //
    // myDST.ReadXmlSchema(sFle)                                                  ;  //
    //                                                                               -----------------------------------
-   CL.Trace(" - Open [" + myDBF + "]")                                           ;  // Open file
+   CL.Trace("Open [" + myDBF + "]")                                              ;  // Open file
    myDST.ReadXml(myDBF)                                                          ;  //
    //                                                                               -----------------------------------
    foreach(DataTable T in myDST.Tables)                                          {  // Set data events handlers
@@ -147,15 +147,15 @@ private void myDST_TableRowDelte  (object sender, DataRowChangeEventArgs   e)   
 #endregion
 #region ********** PRIVATE TreeView       *******************************************
 private void myTrvInit   (TreeView oTreeview                )                       {
-   /*-------------------------------------------------------------------------*/
-   /*-------------------------------------------------------------------------*/
-   //                                                                         -----------------------------------
-   CL.Trace("Initialize treeview")                                         ;  // Initialize treeview
-   //                                                                         -----------------------------------
-   myTRV = oTreeview                                                       ;  // Set treeview reference
-   //                                                                         -----------------------------------
-   myTRV.AfterSelect += new TreeViewEventHandler(this.myTrvSelect)         ;  // Set handlers
-   //                                                                         -----------------------------------
+   /*-------------------------------------------------------------------------------*/
+   /*-------------------------------------------------------------------------------*/
+   //                                                                               -----------------------------------
+   CL.Trace("Initialize treeview")                                               ;  // Initialize treeview
+   //                                                                               -----------------------------------
+   myTRV = oTreeview                                                             ;  // Set treeview reference
+   //                                                                               -----------------------------------
+   myTRV.AfterSelect += new TreeViewEventHandler(this.myTrvSelect)               ;  // Set handlers
+   //                                                                               -----------------------------------
 }
 private void myTrvLoad   (                                  )                       {
    /*-------------------------------------------------------------------------------*/
