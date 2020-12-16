@@ -1,0 +1,18 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]    $S = $script:STP.PROPS['WQL_SELECT']                                    #
+[string]    $F = $script:STP.PROPS['WQL_FROM']                                      #
+[string]    $W = $script:STP.PROPS['WQL_WHERE']                                     #
+[string]    $Q = ""                                                                 #
+[hashtable] $H = @{}                                                                #
+#                                                                                   -----------------------------------
+if ($S -eq "!REQURIED") {$S = ""}                                                   # Check SELECT
+if ($S -eq "") { WRITE-ERROR "SELECT requried"; return }                            #
+#                                                                                   -----------------------------------
+if ($F -eq "!REQURIED") {$F = ""}                                                   # Check FROM
+if ($F -eq "") { WRITE-ERROR "FROM requried"  ; return }                            #
+#                                                                                   -----------------------------------
+$Q = "SELECT $S FROM $F"; if ($W -ne "") { $Q += " WHERE $W" }                      # Get value
+Lv $script:STP.TEMPLATE "Get WMI object [$Q]"                                       #
+GWMI -Query $Q | % { ResultAdd $_ }                                                 #
+#                                                                                   -----------------------------------

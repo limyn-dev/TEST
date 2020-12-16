@@ -1,0 +1,52 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]                               $P = $script:STP.PROPS["STEP_ORDER_DLIST"]   #
+[string]                               $Q = $script:STP.PROPS["QUERY"]              #
+[string]                               $I = $script:LST[$P].PROPS["InstanceName"]   #
+[string]                               $D = ""                                      #
+[System.Data.SQLClient.SQLConnection]  $S = $null                                   #
+[System.Data.SQLClient.SQLCommand]     $C = $null                                   #
+[System.Data.DataTable]                $T = $null                                   #
+[System.Data.DataRow]                  $R = $null                                   #
+[int]                                  $N = 0                                       #
+#                                                                                   -----------------------------------
+$script:LST[$P].RESULT | % {                                                        # Process databases
+   $D = $_.NAME                                                                     #
+   Lv $script:STP.TEMPLATE "Process DB [$D]"                                        #    Connect master
+   try    {                                                                         # Get value
+      $S = NEW-OBJECT System.Data.SQLClient.SQLConnection                           #
+      $S.ConnectionString = "server='$I';database='$D';trusted_connection=true;"    #
+      Lv $script:STP.TEMPLATE "Connect DB [$D]"                                     #    Open connection
+      $S.Open()                                                                     #
+      $C = NEW-OBJECT System.Data.SQLClient.SQLCommand                              #
+      $C.Connection  = $S                                                           #
+      $C.CommandText = $Q                                                           #
+      $T = NEW-OBJECT System.Data.DataTable                                         #
+      Lv $script:STP.TEMPLATE "Execute query"                                       #    Execute query
+      $T.Load($C.ExecuteReader())                                                   #
+      $T.Rows | % {                                                                 #    Load result
+         $R = $_                                                                    #
+         $H = @{}                                                                   #
+         $T.Columns | % {                                                           #
+            Lv $script:STP.TEMPLATE "Add [$($_.ColumnName)]"                        #
+            $H.Add($_.ColumnName, $R[$_.ColumnName])                                #
+         }                                                                          #
+         $H.Add("DATABASE", $D)                                                     #
+         ResultAdd $H                                                               #
+      }                                                                             #
+   }                                                                                #
+   catch  {}                                                                        #
+   Lv $script:STP.TEMPLATE "Close connection"                                       #    Close connection
+   $N = 10                                                                          #
+   while ($N) {                                                                     #
+      switch ($S.State) {                                                           #
+         "Closed"       { $N=0                                                }     #
+         "Broken"       { $N=0                                                }     #
+         "Connecting"   { $N--; if ($N) {START-SLEEP -s 3} else {$S.Close()}  }     #
+         "Executing"    { $N--; if ($N) {START-SLEEP -s 3} else {$S.Close()}  }     #
+         "Fetching"     { $N--; if ($N) {START-SLEEP -s 3} else {$S.Close()}  }     #
+         "Open"         { $N=0; $S.Close()                                    }     #
+      }                                                                             #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------

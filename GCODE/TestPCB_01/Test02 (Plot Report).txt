@@ -1,0 +1,136 @@
+Plot Report
+-----------
+
+Report Written:     Friday, July 17, 2020
+Project Path:       C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02.prj
+Design Path:        C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02.pcb
+Design Title:       
+Created:            17.07.2020 22:01:28
+Last Saved:         17.07.2020 22:06:54
+Editing Time:       8 min
+Units:              thou (precision 0)
+
+
+Device Settings
+===============
+
+
+Gerber Settings
+===============
+
+    Leading zero suppression.
+    G01 assumed throughout.
+    Line termination <*> <CR> <LF>.
+    3.5 format absolute inches.
+    Format commands defined in Gerber file.
+    Aperture table defined in Gerber file.
+    Hardware arcs allowed.
+
+
+Drill Settings
+==============
+
+    Excellon Format 1    Format 3.5 absolute in inches.
+    Leading zero suppression.
+
+
+Plots Output
+============
+
+
+Gerber Output
+=============
+
+C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02 - Bottom Copper.gbr
+
+    Layers:
+    -----------------
+    Bottom Copper
+
+    D-Code Shape  (thou)
+    -----------------------
+    D10    Round 60.00
+    D11    Round 15.00
+
+Gerber Output
+=============
+
+C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02 - Bottom Copper (Resist).gbr
+
+    Layers:
+    -----------------
+    Bottom Copper
+
+    D-Code Shape  (thou)
+    -----------------------
+    D12    Round 70.00
+
+Gerber Output
+=============
+
+C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02 - Bottom Copper (Paste).gbr
+
+    Layers:
+    -----------------
+    Bottom Copper
+
+    D-Code Shape  (thou)
+    -----------------------
+
+NC Drill Output
+===============
+
+C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02 - Drill Data - [Through Hole].drl
+
+    Output:
+    ---------------------------
+    Plated Round Drill Holes
+    Plated Slots
+    Plated Board Outlines
+
+    Tool  Size           Count   ID
+    --------------------------------------
+    T001  0.03500 inches 27    A
+    --------------------------------------
+    Total                27
+    --------------------------------------
+
+C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02 - Drill Data - [Through Hole] (Unplated).drl
+
+    Output:
+    -----------------------------
+    Unplated Round Drill Holes
+    Unplated Slots
+    Unplated Board Outlines
+
+    Tool  Size           Count   ID
+    --------------------------------------
+    T001  0.02500 inches 1
+    --------------------------------------
+    Total                1
+    --------------------------------------
+
+
+Gerber Output
+=============
+
+C:\_GIT\GIT_LIMYN_TEST\PCB\Test02\Test02 - Drill Ident Drawing - [Through Hole].gbr
+
+    Layers:
+    ------------------
+    [Through Hole]
+
+
+Drill Ident Drawing
+===================
+
+    Drill Plated Size Shape ID
+    -----------------------------------
+    35    Y      100  Round A
+
+    D-Code Shape  (thou)
+    -----------------------
+    D13    Round 100.00
+    D14    Round 5.00
+
+End Of Report.

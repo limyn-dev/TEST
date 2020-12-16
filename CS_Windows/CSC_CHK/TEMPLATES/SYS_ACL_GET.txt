@@ -1,0 +1,18 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]    $P = $script:STP.PROPS['Path']                                          # Set path
+[object]    $A = $null                                                              # ACL object
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $P)) { WRITE-ERROR "Unable to find path [$P]"; return }             # Check path
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Get access rights on [$P]."                                # Get ACE
+$A = GET-ACL -Path $P                                                               #
+$A.Access | % {                                                                     #
+   if ($_.IdentityReference -like $script:STP.PROPS['IdentityReference'] ){         #
+      if ($_.IsInherited.ToString() -like $script:STP.PROPS['IsInherited']) {       #
+         Lv $script:STP.TEMPLATE "Add ACE [$($_.IdentityReference)]."               #
+         ResultAdd $_                                                               #
+      }                                                                             #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   ----------------------------------- 

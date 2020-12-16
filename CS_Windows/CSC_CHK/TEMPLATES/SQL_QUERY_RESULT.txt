@@ -1,0 +1,35 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]                               $P = $script:STP.PROPS["ConnectionString"]   #
+[string]                               $Q = $script:STP.PROPS["SQLQuery"]           #
+[System.Data.SQLClient.SQLConnection]  $S = $null                                   #
+[System.Data.SQLClient.SQLCommand]     $C = $null                                   #
+[System.Data.DataTable]                $T = $null                                   #
+[System.Data.DataRow]                  $R = $null                                   #
+[int]                                  $N = 0                                       #
+#                                                                                   -----------------------------------
+try   {                                                                             # Get value
+   Lv $script:STP.TEMPLATE "Connect SQL server"                                     #    Connect master
+   $S = NEW-OBJECT System.Data.SQLClient.SQLConnection                              #
+   $S.ConnectionString = $P                                                         #
+   $S.Open()                                                                        #
+   $C = NEW-OBJECT System.Data.SQLClient.SQLCommand                                 #
+   $C.Connection  = $S                                                              #
+   $C.CommandText = $Q                                                              #
+   $T = NEW-OBJECT System.Data.DataTable                                            #
+   Lv $script:STP.TEMPLATE "Execute query"                                          #    Execute query
+   $T.Load($C.ExecuteReader())                                                      #
+   $T.Rows | % {                                                                    #    Load result
+      Lv $script:STP.TEMPLATE "Find row"                                            #
+      $R = $_                                                                       #
+      $H = @{}                                                                      #
+      $T.Columns | % { $H.Add($_.ColumnName, $R[$_.ColumnName]) }                   #
+      ResultAdd $H                                                                  #
+   }                                                                                #
+}                                                                                   #
+catch { Lv $script:STP.TEMPLATE "!!! Terminating error occurs" }                    #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Close connection"                                          # Close connection
+try   { $S.Close()                                             }                    #
+catch { Lv $script:STP.TEMPLATE "!!! Terminating error occurs" }                    #
+#                                                                                   -----------------------------------

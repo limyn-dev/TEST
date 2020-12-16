@@ -1,0 +1,14 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string] $SCS = $script:STP.PROPS["STEP_CONNECTION"]                                #
+[string] $DBN = $script:STP.PROPS["DB_NAME"]                                        #
+#                                                                                   -----------------------------------
+[Microsoft.SqlServer.Management.Smo.Server]   $S = $script:LST[$SCS].OUTPUT         #
+[Microsoft.SqlServer.Management.Smo.Database] $D = $null                            #
+#                                                                                   -----------------------------------
+$D = New-Object Microsoft.SqlServer.Management.Smo.Database ($S, $DBN)              # Get DB
+#                                                                                   -----------------------------------
+$D.Drop()                                                                           # Drop DB
+#                                                                                   -----------------------------------
+$S.DataBases | % { ResultAdd $_ }                                                   # Set step result
+#                                                                                   -----------------------------------

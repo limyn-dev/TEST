@@ -1,0 +1,61 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]                               $P = $script:STP.PROPS["STEP_ORDER_DLIST"]   #
+[string]                               $F = $script:STP.PROPS["FILE_SQL_CMD"]       #
+[string]                               $R = $script:STP.PROPS["FILE_SQL_REQ"]       #
+[string]                               $I = $script:LST[$P].PROPS["InstanceName"]   #
+[string]                               $D = ""                                      #
+[string]                               $A = "Microsoft.SqlServer.Smo"               #
+[object[]]                             $L = @()                                     #
+[System.Data.SQLClient.SQLConnection]  $S = $null                                   #
+[System.Data.SQLClient.SQLCommand]     $C = $null                                   #
+[System.Data.DataTable]                $T = $null                                   #
+[int]                                  $N = 0                                       #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $F)) { $script:STP.ERROR = "PATH_NOT_FOUND"; return }               #
+#                                                                                   -----------------------------------
+$script:LST[$P].RESULT | % {                                                        # Process databases
+   $D = $_.NAME                                                                     #
+   Lv $script:STP.TEMPLATE "Process DB [$D]"                                        #
+   if ($R -ne "")    {                                                              #    Check prerequisites
+      try    {                                                                      # 
+         $S = NEW-OBJECT System.Data.SQLClient.SQLConnection                        #
+         $S.ConnectionString = "server='$I';database='$D';trusted_connection=true;" #
+         Lv $script:STP.TEMPLATE "Connect DB [$D]"                                  #       Open connection
+         $S.Open()                                                                  #
+         $C = NEW-OBJECT System.Data.SQLClient.SQLCommand                           #
+         $C.Connection  = $S                                                        #
+         $C.CommandText = GET-CONTENT $R                                            #
+         $T = NEW-OBJECT System.Data.DataTable                                      #
+         Lv $script:STP.TEMPLATE "Execute query"                                    #       Execute query
+         $T.Load($C.ExecuteReader())                                                #
+         if ($T.Rows.Count -eq 0) { $F = "" }                                       #
+      }                                                                             #
+      catch  {}                                                                     #
+      Lv $script:STP.TEMPLATE "Close connection"                                    #        Close connection
+      $N = 10                                                                       #
+      while ($N) {                                                                  #
+         switch ($S.State) {                                                        #
+            "Closed"       { $N=0                                                }  #
+            "Broken"       { $N=0                                                }  #
+            "Connecting"   { $N--; if ($N) {START-SLEEP -s 3} else {$S.Close()}  }  #
+            "Executing"    { $N--; if ($N) {START-SLEEP -s 3} else {$S.Close()}  }  #
+            "Fetching"     { $N--; if ($N) {START-SLEEP -s 3} else {$S.Close()}  }  #
+            "Open"         { $N=0; $S.Close()                                    }  #
+         }                                                                          #
+      }                                                                             #
+   }                                                                                #
+   if (!($F -ne "")) {                                                              #    Apply patch file
+      $L = [appdomain]::currentdomain.getassemblies()                               #
+      if (!($L | WHERE { $_.FullName -like "*$A*" })) {                             #       Load SMO
+         Lv $script:STP.TEMPLATE "Load SMO"                                         #
+         [Reflection.Assembly]::LoadWithPartialName($A) | OUT-NULL                  #
+      }                                                                             #
+      Lv $script:STP.TEMPLATE "Execute SQL command file"                            #
+      Lv $script:STP.TEMPLATE "   Instance [$I]"                                    #
+      Lv $script:STP.TEMPLATE "   Database [$D]"                                    #
+      Lv $script:STP.TEMPLATE "   SQL file [$F]"                                    #
+      invoke-sqlcmd -InputFile $F -ServerInstance $I -Database $D                   #       Execute command
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------

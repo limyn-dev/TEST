@@ -1,0 +1,20 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]    $F = $script:STP.PROPS['FileName']                                      #
+[object]    $P = $null                                                              #
+[byte[]]    $C = @()                                                                #
+[hashtable] $H = @{}                                                                #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $F)) { WRITE-ERROR "Unable to find file [$F]"; return }             #
+#                                                                                   -----------------------------------
+$P = NEW-OBJECT -TypeName System.Security.Cryptography.MD5CryptoServiceProvider     # Get value
+GI $F | % {                                                                         #
+   Lv $script:STP.TEMPLATE "Hash file [$($_.FullName)]."                            #
+   $C = [System.IO.File]::ReadAllBytes($_.FullName)                                 #
+   $H = @{}                                                                         #
+   $H.Add("FILE", $_.FullName)                                                      #
+   $H.Add("HASH", [System.BitConverter]::ToString($P.ComputeHash($C)))              #
+   $H['HASH'] = $H['HASH'].Replace('-', "")                                         #
+   ResultAdd $H                                                                     #
+}                                                                                   #
+#                                                                                   -----------------------------------

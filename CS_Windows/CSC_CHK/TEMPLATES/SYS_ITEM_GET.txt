@@ -1,0 +1,13 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]      $W = $script:STP.PROPS['WHERE']                                       #
+[scriptblock] $B = [Scriptblock]::Create("return $($script:STP.PROPS['PATH'])")     #
+[string]      $P = INVOKE-COMMAND -ScriptBlock $B                                   #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $P)) { WRITE-ERROR "Unable to find path [$P]"; return  }            # Exit if no path
+#                                                                                   -----------------------------------
+if ($W -eq "") { $W = 'WRITE-OUTPUT $true' }                                        # 
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Get items [$P]"                                            # Create object list
+GI -Path $P | % { if(IEX $W) { ResultAdd $_ } }                                     #
+#                                                                                   -----------------------------------

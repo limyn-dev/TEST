@@ -1,0 +1,22 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+#                                                                                   -----------------------------------
+[object]    $C = [ADSI]"WinNT://$($env:COMPUTERNAME)"                               #
+[string]    $M = $script:STP.PROPS['Member']; if ($M -eq "") { $M = "*" }           #
+[string]    $G = ""                                                                 #
+#                                                                                   -----------------------------------
+(GWMI -Class Win32_Group -Filter 'LocalAccount = true') | % {                       # Get value
+   if ($_.Name -like $script:STP.PROPS['Group']) {                                  #    Check group name
+      $G = $_.Name                                                                  #    Get group object     
+      ($C.Children.Find($G, 'group')).Invoke('Members') | % {                       #    Process members
+         $_.GetType().InvokeMember('Name', 'GetProperty', $null, $_, $null) | % {   #       Get member name
+            Lv $script:STP.TEMPLATE "Check if [$($_)] like [$M]."                   #               
+            if ($_ -like $M) {                                                      #       Filter member
+               Lv $script:STP.TEMPLATE "   Found [$($_)]."                          #               
+               ResultAdd @{'GROUP'="$G"; 'MEMBER'="$($_)"} "*"                      #
+            }                                                                       #
+         }                                                                          #
+      }                                                                             #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------

@@ -1,0 +1,21 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]   $P = $script:STP.PROPS["PACKAGE_ID"]                                     #
+[string[]] $A = $P.Replace(" - ", ";").Split(";")                                   #
+[string]   $K = "$($script:TGR)\$($A[0]) - $($A[1])"                                # Registry key
+[string]   $D = "UPGRADED_$(Get-Date -Format ""dd.MM.yyyy HH:mm:ss"")"              # Registry data
+[object]   $O = $null                                                               #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $K)) { return }                                                     # Check if key exists
+(GI $K).GetValueNames() | % {                                                       #
+   if ($_ -like $P)         {                                                       #
+      Lv $script:STP.TEMPLATE "Update package TAG [$P]"                             # Set TAG
+      Set-ItemProperty $K $P -Value $D                                              #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------
+if (TEST-PATH $K) {                                                                 # Step return values
+   $O = GI $K                                                                       #
+   $O.GetValueNames() | % { ResultAdd @{'TAG'="$($_)";'VALUE'=$O.GetValue($_)} }    #
+}                                                                                   #
+#                                                                                   -----------------------------------

@@ -1,0 +1,110 @@
+{
+  "uuid": "ebe595668f15afc316d18d1d891851c9",
+  "path": "Offline/Test01",
+  "name": "Test01",
+  "content": "",
+  "created_at": "2020-08-19 17:38:54",
+  "updated_at": "2020-08-20 10:42:27",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "95bc1e95d1837229133f8a71d7a27ee8",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "25941d0a3007a8365e2032d4278dd8c0": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "HDR-IDC-2.54-2X3P",
+          1,
+          "IDC-TH_6P-P2.54_C11214",
+          "P1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "BOOMELE",
+            "BOM_Manufacturer Part": "2X3 2.54mm IDC Box",
+            "BOM_Supplier Part": "C11214",
+            "puuid": "847fe177175048f3817aae6b5949e649",
+            "uuid": "25941d0a3007a8365e2032d4278dd8c0"
+          }
+        ]
+      ],
+      "updateTime": 1597852595,
+      "createTime": 1597851793,
+      "histories": [],
+      "created_at": "2020-08-19 17:43:13",
+      "updated_at": "2020-08-19 17:56:35"
+    },
+    {
+      "uuid": "2604db97a9d2149fc30c3f5dc1806ee9",
+      "puuid": "ebe595668f15afc316d18d1d891851c9",
+      "title": "PCB01",
+      "filename": "PCB01.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {},
+      "BOM": [],
+      "updateTime": 1597908354,
+      "createTime": 1597853065,
+      "histories": [],
+      "created_at": "2020-08-19 18:04:25",
+      "updated_at": "2020-08-20 09:25:54"
+    },
+    {
+      "uuid": "99a8b8b3ee662fed0bf16783bb5a49fb",
+      "puuid": "ebe595668f15afc316d18d1d891851c9",
+      "title": "PCB2",
+      "filename": "PCB2.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "9551d5c0025140a28b5162d083989bd6": 2
+      },
+      "BOM": [],
+      "updateTime": 1597909795,
+      "createTime": 1597909795,
+      "histories": [],
+      "created_at": "2020-08-20 09:49:55",
+      "updated_at": "2020-08-20 09:49:55"
+    },
+    {
+      "uuid": "6f5bd5f95a2f125e3b6e20edbdc2d780",
+      "puuid": "ebe595668f15afc316d18d1d891851c9",
+      "title": "PCB03",
+      "filename": "PCB03.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "bc30752f83694054baa42649cbb6b7d0": 2
+      },
+      "BOM": [],
+      "updateTime": 1597912947,
+      "createTime": 1597912947,
+      "histories": [],
+      "created_at": "2020-08-20 10:42:27",
+      "updated_at": "2020-08-20 10:42:27"
+    }
+  ],
+  "sort": [],
+  "title": "Test01",
+  "foldername": "Test01",
+  "schfilename": "Test01.json",
+  "schfilemtime": 1597852595484
+}

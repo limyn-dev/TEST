@@ -1,0 +1,13 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]   $P = $script:STP.PROPS["PACKAGE_ID"]                                     #
+[string[]] $A = $P.Replace(" - ", ";").Split(";")                                   #
+[string]   $K = "$($script:TGR)\$($A[0]) - $($A[1])"                                # Registry key
+[string]   $N = "$($A[0]) - $($A[1])"                                               # New name
+           $N += " ->REM-$(Get-Date -Format ""yyMMdd-HHmmss"")"                     #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $K)) { return }                                                     # Check if key exists
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Remove application TAGs [$K]"                              # Set TAG
+REN $K $N -force                                                                    #
+#                                                                                   -----------------------------------

@@ -1,0 +1,18 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]   $P = $script:STP.PROPS["PACKAGE_ID"]                                     #
+[string[]] $A = $P.Replace(" - ", ";").Split(";")                                   #
+[string]   $K = "$($script:TGR)\$($A[0]) - $($A[1])"                                # Registry key
+[string]   $D = "INSTALLED_$(Get-Date -Format ""dd.MM.yyyy HH:mm:ss"")"             # Registry date
+[object]   $O = $null                                                               #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $K)) { MD $K -Force | OUT-NULL }                                    # Create Key
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Add install TAG [$P]"                                      # Set TAG
+NEW-ITEMPROPERTY $K $P -value $D -PropertyType "string" -Force | OUT-NULL           #
+#                                                                                   -----------------------------------
+if (TEST-PATH $K) {                                                                 # Step return values
+   $O = GI $K                                                                       #
+   $O.GetValueNames() | % { ResultAdd @{'TAG'="$($_)";'VALUE'=$O.GetValue($_)} }    #
+}                                                                                   #
+#                                                                                   -----------------------------------

@@ -1,0 +1,36 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[hashtable] $P = $script:STP.PROPS                                                  # Parameters
+[object]    $O = $null                                                              #
+#                                                                                   -----------------------------------
+if ($P['ArgumentList'] -eq ""             ) { $P.Remove('ArgumentList')        }    # Set ArgumentList
+#                                                                                   -----------------------------------
+if ($P['WorkingDirectory'] -eq ""         ) { $P.Remove('WorkingDirectory')    }    # Set WorkingDirectory
+#                                                                                   -----------------------------------
+if ($P['WindowStyle'] -eq ""              ) { $P.Remove('WindowStyle')         }    # Set WindowStyle
+#                                                                                   -----------------------------------
+$P['UseNewEnvironment'] = $P['UseNewEnvironment'].ToUpper()                         # Set UseNewEnvironment
+if     ($P['UseNewEnvironment'] -eq 'TRUE') { $P['UseNewEnvironment'] = $true  }    #
+elseif ($P['UseNewEnvironment'] -eq 'YES' ) { $P['UseNewEnvironment'] = $true  }    #
+elseif ($P['UseNewEnvironment'] -eq '1'   ) { $P['UseNewEnvironment'] = $true  }    #
+else                                        { $P['UseNewEnvironment'] = $false }    #
+#                                                                                   -----------------------------------
+$P['Wait'] = $P['Wait'].ToUpper()                                                   # Set Wait
+if     ($P['Wait'] -eq 'TRUE'             ) { $P['Wait'] = $true               }    #
+elseif ($P['Wait'] -eq 'YES'              ) { $P['Wait'] = $true               }    #
+elseif ($P['Wait'] -eq '1'                ) { $P['Wait'] = $true               }    #
+else                                        { $P['Wait'] = $false              }    #
+#                                                                                   -----------------------------------
+$P.Add('PassThru', $true)                                                           # Set PassThru
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "START Process:"                                            # Echo params
+$P | OUT-HOST                                                                       #
+Lv $script:STP.TEMPLATE ""                                                          #
+#                                                                                   -----------------------------------
+$O = START-PROCESS @P                                                               # Excute
+#                                                                                   -----------------------------------
+if ($O.HasExited)                                                             {     # Get result
+   ResultAdd ($O | SELECT ID, ExitCode, StartTime, ExitTime)                  }     #
+else                                                                          {     #
+   ResultAdd ($O | SELECT ID, StartTime, Path, Description, MainWindowTitle)  }     #
+#                                                                                   -----------------------------------

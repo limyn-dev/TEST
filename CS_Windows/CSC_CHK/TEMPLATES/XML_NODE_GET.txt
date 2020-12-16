@@ -1,0 +1,24 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]    $F = $script:STP.PROPS['File']                                          #
+[XML]       $D = $null                                                              #
+[hashtable] $H = @{}                                                                #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $F)) {                                                              # Check if file exists
+   WRITE-ERROR = "Unable to find file [$F]"                                         #
+   return                                                                           #
+}                                                                                   #
+#                                                                                   -----------------------------------
+GET-ITEM $script:STP.PROPS['File'] | % {                                            # Process files
+   $F = $_.FullName                                                                 #
+   Lv $script:STP.TEMPLATE "Open file [$F]"                                         #    Open XML file
+   $D = [XML](GET-CONTENT $F)                                                       #
+   $D.SelectNodes($script:STP.PROPS['XPath']) | % {                                 #    Get values
+      $H = @{}                                                                      #
+      $H.Add("FILE", $F)                                                            #
+      $H.Add("NODE", $_.Name)                                                       #
+      $H.Add("TEXT", $_.'#text')                                                    #
+      ResultAdd $H                                                                  #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------

@@ -1,0 +1,50 @@
+Plot Report
+-----------
+
+Report Written:     Wednesday, August 19, 2020
+Design Path:        C:\_GIT\GIT_LIMYN_TEST\PCB\DesignSpark_01\TEST01.pcb
+Design Title:       
+Created:            19.08.2020 21:43:05
+Last Saved:         19.08.2020 21:50:02
+Editing Time:       7 min
+Units:              thou (precision 0)
+
+
+Device Settings
+===============
+
+
+Gerber Settings
+===============
+
+    Leading zero suppression.
+    G01 assumed throughout.
+    Line termination <*> <CR> <LF>.
+    3.5 format absolute inches.
+    Format commands defined in Gerber file.
+    Aperture table defined in Gerber file.
+    Hardware arcs allowed.
+
+
+
+Plots Output
+============
+
+
+Gerber Output
+=============
+
+C:\_GIT\GIT_LIMYN_TEST\PCB\DesignSpark_01\TEST01 - Bottom Copper.gbr
+
+    Layers:
+    -----------------
+    Bottom Copper
+
+    D-Code Shape  (thou)
+    ---------------------------------------------
+    D17    Round 178.92
+    D18    Oval 1073.52 X 1968.12  Rotation 90
+    D19    Oval 2826.94 X 3757.32  Rotation 90
+    D70    Oval 2826.94 X 3757.32
+
+End Of Report.

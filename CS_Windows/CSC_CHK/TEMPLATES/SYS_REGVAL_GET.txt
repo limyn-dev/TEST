@@ -1,0 +1,20 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]    $P = $script:STP.PROPS['Key']                                           #
+[string]    $S = $script:STP.PROPS['Select']                                        #
+[object]    $O = $null                                                              #
+[string]    $K = ""                                                                 # 
+[hashtable] $H = @{}                                                                # 
+#                                                                                   -----------------------------------
+if (!(TEST-PATH $P)) { return }                                                     # Check Key
+#                                                                                   -----------------------------------
+GI $P | % {                                                                         # Get values
+   $O = $_                                                                          #
+   $K = $_.PsPath.Replace("Microsoft.PowerShell.Core\Registry::", "")               #
+   Lv $script:STP.TEMPLATE "Check key [$K]"                                         #
+   $O.GetValueNames() | ? { $_ -like $script:STP.PROPS['Value'] } | % {             #
+      Lv $script:STP.TEMPLATE "   Found value [$($_)]"                              #
+      ResultAdd @{'KEY'="$K";'VALUE'="$($_)";'CONTENT'=$O.GetValue($_)} $S          #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------

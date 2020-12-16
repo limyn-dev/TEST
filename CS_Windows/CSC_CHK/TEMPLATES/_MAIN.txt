@@ -1,0 +1,36 @@
+#
+# ENTRY POINT
+#-----------------------------------------------------------------------------------#
+ScriptStart                                                                         # Start script
+#-----------------------------------------------------------------------------------#
+LgStep "Create sequence."                                                           # Create sequence
+try   { SeqInit                                                   }                 #
+catch { "! ERROR > A terminating error occurs." | OUT-HOST        }                 #
+Le 2 $true                                                                          #   
+#-----------------------------------------------------------------------------------#
+try                                                               {                 # Execute sequence
+   $script:LST.GetEnumerator() | SORT -Property Name | %       {                    #
+      $script:STP = $_.Value                                                        #    Set current step
+      if ($script:STP.ENABLED)                              {                       #
+         SeqStepExec                                        }  }  }                 #
+catch { "! ERROR > A terminating error occurs." | OUT-HOST        }                 #
+Le 2 $true                                                                          #   
+#-----------------------------------------------------------------------------------#
+LgStep "Create HTML report."                                                        # Create result repport   
+try   { SeqResultHtml                                             }                 #
+catch { "! ERROR > A terminating error occurs." | OUT-HOST        }                 #
+Le 1 $false                                                                         #   
+#-----------------------------------------------------------------------------------#
+LgStep "Create MD report."                                                          # Create result repport   
+try   { SeqResultMD                                             }                   #
+catch { "! ERROR > A terminating error occurs." | OUT-HOST        }                 #
+Le 1 $false                                                                         #   
+#-----------------------------------------------------------------------------------#
+LgStep "Steps result."                                                              # Display results      
+try   { SeqResultLog                                              }                 #
+catch { "! ERROR > A terminating error occurs." | OUT-HOST        }                 #
+Le 1 $false                                                                         #   
+#-----------------------------------------------------------------------------------#
+ScriptExit                                                                          # End of script
+#-----------------------------------------------------------------------------------#
+# END OF FILE

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string] $G = $script:STP.PROPS['Group']                                            #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Get local group like [$G]."                                # Get value
+(GWMI -Class Win32_Group -Filter 'LocalAccount = true') | % {                       #
+   if ($_.Name -like $G) {                                                          #
+      Lv $script:STP.TEMPLATE "   Found [$($_.Name)]."                              #
+      ResultAdd $_
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------

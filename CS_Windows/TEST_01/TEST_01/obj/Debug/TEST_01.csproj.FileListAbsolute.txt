@@ -1,8 +1,0 @@
-C:\_GIT\CS\TEST_01\TEST_01\bin\Debug\TEST_01.exe.config
-C:\_GIT\CS\TEST_01\TEST_01\bin\Debug\TEST_01.exe
-C:\_GIT\CS\TEST_01\TEST_01\bin\Debug\TEST_01.pdb
-C:\_GIT\CS\TEST_01\TEST_01\obj\Debug\TEST_01.MainForm.resources
-C:\_GIT\CS\TEST_01\TEST_01\obj\Debug\TEST_01.csproj.GenerateResource.Cache
-C:\_GIT\CS\TEST_01\TEST_01\obj\Debug\TEST_01.exe
-C:\_GIT\CS\TEST_01\TEST_01\obj\Debug\TEST_01.pdb
-C:\_GIT\CS\TEST_01\TEST_01\obj\Debug\TEST_01.csprojResolveAssemblyReference.cache

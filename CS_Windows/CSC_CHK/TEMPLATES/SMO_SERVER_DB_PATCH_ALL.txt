@@ -1,0 +1,66 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string] $SCS = $script:STP.PROPS["STEP_CONNECTION"]                                #
+[string] $DBN = $script:STP.PROPS["DB_NAME"]                                        #
+[string] $PPH = $script:STP.PROPS["PATCH_PATH"]                                     #
+[string] $EIF = $script:STP.PROPS["EXEC_IF"]                                        #
+#                                                                                   -----------------------------------
+[string]                                    $I=$script:LST[$SCS].PROPS['INSTANCE']  # Instance name
+[string]                                    $D=""                                   # DB name
+[string]                                    $P=""                                   # Patchs path
+[Microsoft.SqlServer.Management.Smo.Server] $C=$null                                # SMO computer
+[string]                                    $S=$null                                # Generic string
+[object]                                    $O=$null                                # Generic object
+[object[]]                                  $L=""                                   # Generic object list
+[hashtable]                                 $R=@{}                                  # Result values
+[string]                                    $Q=$null                                # SQL query
+#                                                                                   -----------------------------------
+$P = $PPH.Replace('.\', "$($script:SPH)\")                                          # Set patch path
+if (!(TEST-PATH $P))        {                                                       #
+   Lv $script:STP.TEMPLATE "Patch files location not found."; return    }           #
+#                                                                                   -----------------------------------
+if (!(TEST-PATH "$P\$EIF")) {                                                       # Check EXEC_IF file
+   Lv $script:STP.TEMPLATE "Requirement check file not found."; return  }           #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Get content of [$P\$EIF]."                                 #
+$Q = GET-CONTENT "$P\$EIF"                                                          #
+#                                                                                   -----------------------------------
+$script:LST[$SCS].OUTPUT.Databases | ? { $_.Name -like $DBN } | % {                 # Process DBs
+   $D = $_.Name                                                                     #    Set DB name
+   Lv $script:STP.TEMPLATE "Patch DB [$D]."                                         #
+   $S = "Data Source=$I;Initial Catalog=$D;Trusted_Connection=true"                 #    Connect SMO server
+   $C = New-Object Microsoft.SqlServer.Management.Smo.Server                        #
+   $C.ConnectionContext.ConnectionString = $S                                       #
+   Lv $script:STP.TEMPLATE "Execute SQL file [$Q]."                                 #    Execute EXEC_IF query   
+   try   { $O = $C.ConnectionContext.ExecuteScalar($Q)               }              #
+   catch { Lv $script:STP.TEMPLATE "ERROR occurs during query DB."   }              #
+   Lv $script:STP.TEMPLATE " -> EXEC_IF result [$O]"                                #
+   if ($O)  {                                                                       #    Patch if required
+      Lv $script:STP.TEMPLATE "Upgrade required."                                   #
+      GCI $P | ? {($_.Name -like "*.sql")} | SORT -Property Name | % {              #
+         if (!($_.Name -like $EIF)) {                                               #
+            $R = @{}                                                                #       Set result object
+            $R.Add('DATABASE'    , $D                     )                         #
+            $R.Add('STATUS'      , "Patch file applied."  )                         #
+            $R.Add('PATCH_FILE'  , $_.Name                )                         #            
+            Lv $script:STP.TEMPLATE "   Apply patch [$($_.FullName)]."              #       Apply patch file
+            $S = $_.Name.Substring(0, $_.Name.Length -4)                            #
+            $S = "$($script:LOG)\$S.log"                                            #
+            Lv $script:STP.TEMPLATE "   Output file [$S]"                           #
+            $R.Add('OUTPUT_FILE' , $S                     )                         #
+            $S = "-S ""$I"" -d ""$D"" -i ""$($_.FullName)"" -o ""$S"""              #
+            $O = [System.Diagnostics.Process]::Start("SqlCmd.exe", $S)              #
+            $O.WaitForExit()                                                        #
+            Lv $script:STP.TEMPLATE "   -> Return code [$($O.ExitCode)]"            #
+            $R.Add('RETURN_CODE' , $O.ExitCode            )                         #
+            ResultAdd $R                                                            #
+         }                                                                          #
+      }                                                                             #
+   }                                                                                #
+   else     {                                                                       #
+      Lv $script:STP.TEMPLATE "Upgrade not required."                               #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------
+ResultAdd $R                                                                        # Set step output
+#                                                                                   -----------------------------------

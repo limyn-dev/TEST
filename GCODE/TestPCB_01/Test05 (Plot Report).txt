@@ -1,0 +1,47 @@
+Plot Report
+-----------
+
+Report Written:     Friday, July 17, 2020
+Design Path:        C:\_GIT\GIT_LIMYN_TEST\GCODE\TestPCB_01\Test05.pcb
+Design Title:       
+Created:            17.07.2020 23:14:42
+Last Saved:         17.07.2020 23:16:36
+Editing Time:       6 min
+Units:              inches (precision 0)
+
+
+Device Settings
+===============
+
+
+Gerber Settings
+===============
+
+    Leading zero suppression.
+    G01 assumed throughout.
+    Line termination <*> <CR> <LF>.
+    3.5 format absolute inches.
+    Format commands defined in Gerber file.
+    Aperture table defined in Gerber file.
+    Hardware arcs allowed.
+
+
+
+Plots Output
+============
+
+
+Gerber Output
+=============
+
+C:\_GIT\GIT_LIMYN_TEST\GCODE\TestPCB_01\Test05 - Bottom Copper.gbr
+
+    Layers:
+    -----------------
+    Bottom Copper
+
+    D-Code Shape  (thou)
+    -----------------------
+    D15    Round 2149.20
+
+End Of Report.

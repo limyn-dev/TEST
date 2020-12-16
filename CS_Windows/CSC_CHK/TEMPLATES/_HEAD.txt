@@ -1,0 +1,484 @@
+param([string] $SF = "")
+#
+# GENERAL
+#                                                                                   -----------------------------------
+Set-StrictMode -Version latest                                                      #
+$global:VerbosePreference     = "Continue"                                          #
+$global:DebugPreference       = "SilentlyContinue"                                  #
+$global:ErrorActionPreference = "SilentlyContinue"                                  #
+#                                                                                   -----------------------------------
+# GLOBALS
+#                                                                  Script constants >----------------------------------
+[string]              $script:SPH = $MyInvocation.MyCommand.Definition              # Script path
+                      $script:SPH = Split-Path -Path $script:SPH -Parent            #
+[int]                 $script:LGW = 300                                             # Root with
+[hashtable]           $script:LGR = @{}                                             # Root logs
+                      $script:LGR.Add('W8'  , "$($env:programdata)\ICRC\Logs" )     #
+                      $script:LGR.Add('F2K8', 'C:\ICRC\Logs\Installation'     )     #
+[string]              $script:LG2 = ""                                              # Script log
+[string]              $script:LOG = ""                                              # Script log
+[int]                 $script:RTC = 0                                               #
+[string]              $script:DTF = "$($script:SPH)\$SF"                            # Data file
+[System.Data.DataSet] $script:DTS = $null                                           # Data source object
+[hashtable]           $script:LST = @{}                                             # Steps list
+[object]              $script:STP = $null                                           # Current step object
+[string]              $script:TGR = 'HKLM:\Software\ICRC\Packages'                  #
+#                                                                                   -----------------------------------
+# FUNCTIONS
+#
+function ScriptStart          {
+   ##################################################################################
+   ##################################################################################
+   [string] $F = ""                                                                 #
+   [object] $S = $null                                                              #
+   #                                                                                -----------------------------------
+   $S = NEW-OBJECT "Management.Automation.Host.Size" @($script:LGW, 3000)           # Set console size
+   (GET-HOST).UI.RawUI.BufferSize = $S                                              #
+   #                                                                                -----------------------------------
+   Set-Location $script:SPH                                                         # Set default location
+   #                                                                                -----------------------------------
+   if (TEST-PATH $script:LGR['W8']) { $F = $script:LGR['W8']   }                    # Set log root
+   else                             { $F = $script:LGR['F2K8'] }                    #
+   #                                                                                -----------------------------------
+   $F += '\' + ($SF.Split('__'))[0]                                                 # Set log path
+   $F = $F.ToLower().Replace('.xml', "")                                            #
+   if (-not(TEST-PATH $F)) { NEW-ITEM $F -itemtype directory }                      #
+   $script:LOG = $F                                                                 #
+   #                                                                                -----------------------------------
+   $F += "\" + ([guid]::NewGuid()).ToString() + ".log"                              # Start transcript
+   START-TRANSCRIPT -Path $F                                                        #
+   #                                                                                -----------------------------------
+   ""                                   | OUT-HOST                                  # Log start
+   ("=" * 80)                           | OUT-HOST                                  #
+   "START SEQUENCE [$SF]"               | OUT-HOST                                  #
+   "   Computer [$($env:COMPUTERNAME)]" | OUT-HOST                                  #
+   "   User     [$($env:USERNAME)]"     | OUT-HOST                                  #
+   ("=" * 80)                           | OUT-HOST                                  #
+   ""                                   | OUT-HOST                                  #
+   #                                                                                -----------------------------------
+}
+function ScriptExit           {
+   ##################################################################################
+   ##################################################################################
+   #                                                                                -----------------------------------
+   ""                                                       | OUT-HOST              #
+   ("=" * 80)                                               | OUT-HOST              #
+   "End of script, return code [$($script:RTC )]"           | OUT-HOST              #
+   ("=" * 80)                                               | OUT-HOST              #
+   ""                                                       | OUT-HOST              #
+   #                                                                                -----------------------------------
+   Stop-Transcript                                                                  #
+   #                                                                                -----------------------------------
+   Exit $script:RTC                                                        #
+   #                                                                                -----------------------------------
+}
+function LgStep               {
+   param ([string] $sText = "")
+   ##################################################################################
+   ##################################################################################
+   #                                                                                -----------------------------------
+   Lg ""                                                                            #
+   Lg ("-" * ($script:LGW-50))                                                      #
+   Lg $sText = ""                                                                   #
+   #                                                                                -----------------------------------
+}
+function Lg                   {
+   param ([string] $sText = "")
+   ##################################################################################
+   ##################################################################################
+   [string] $T = "$(Get-Date -Format "dd.MM.yyyy HH:mm:ss")"                        #
+   #                                                                                -----------------------------------
+   "$T       > $sText" | OUT-HOST                                                   #
+   #                                                                                -----------------------------------
+}
+function Lv                   {
+   param ( [string] $sCaller = ""
+         , [string] $sText   = ""
+         )
+   ##################################################################################
+   ##################################################################################
+   [string] $T = ""                                                                 #
+   #                                                                                -----------------------------------
+   if ($sCaller.Length -lt 22) { $T = (" " *(22-$sCaller.Length)) }                 #
+   #                                                                                -----------------------------------
+   "   $sCaller $($T):    $sText" | OUT-HOST                                        #
+   #                                                                                -----------------------------------
+}
+function Le                   {
+   param ( [int]  $nCode     = 0
+         , [bool] $bCritical = $false
+         )
+   ##################################################################################
+   ##################################################################################
+   #                                                                                -----------------------------------
+   $error | % {                                                                     # Process errors
+      ""                                                           | OUT-HOST       #    Display errors
+      "ERROR:"                                                     | OUT-HOST       #
+      "======"                                                     | OUT-HOST       #
+      "ScriptName        [$($_.InvocationInfo.ScriptName)]"        | OUT-HOST       #
+      "ScriptLineNumber  [$($_.InvocationInfo.ScriptLineNumber)]"  | OUT-HOST       #
+      "Reason            [$($_.CategoryInfo.Reason)]"              | OUT-HOST       #
+      "Message           [$($_.Exception.Message)]"                | OUT-HOST       #
+      "Source            [$($_.Exception.Source)]"                 | OUT-HOST       #
+      ""                                                           | OUT-HOST       #
+      $script:RTC = $script:RTC -bor $nCode                                         #    Set return code
+   }                                                                                #
+   #                                                                                -----------------------------------
+   $error.Clear()                                                                   # Reset errors
+   #                                                                                -----------------------------------
+   if ($bCritical) {                                                                # Exit if critical
+      if (($script:RTC -band $nCode)) {                                    #
+         Lg "Critical error occured, end of script"                                 #
+         ScriptExit                                                                 #
+      }                                                                             #
+   }                                                                                #
+   #                                                                                -----------------------------------
+}
+function ResultAdd            {
+      param ( [object] $oObject = $null )
+   #--------------------------------------------------------------------------------#
+   #--------------------------------------------------------------------------------#
+   #                                                                                -----------------------------------
+   [object] $O = $null                                                              #
+   [string] $T = ""                                                                 #
+   #                                                                                -----------------------------------
+   if ($oObject -ne $null)                                     {                    # Set result object
+      $T = $oObject.GetType().Name.ToUpper()                                        #
+      Lv "ResultAdd" "Add result object of type [$T]"                               #
+      switch ($T)                                              {                    #
+         'HASHTABLE'                                           {                    #
+            if ($oObject.Count)                                {                    #
+               $O = NEW-OBJECT PSObject -Property $oObject     }}                   #
+            else                                               {                    #
+               Lv "ResultAdd" "! Empty hashtable."             }                    #
+         default                                               {                    #
+            $O = $oObject                                      }}}                  #
+   else                                                        {                    #
+      Lv "ResultAdd" "Empty object. No result added"           }                    #
+   #                                                                                -----------------------------------
+   if ($O -ne $null) { $script:STP.RESULT += $O }                                   # Add result object
+   #                                                                                -----------------------------------
+}
+function SeqInit              {
+   #--------------------------------------------------------------------------------#
+   #--------------------------------------------------------------------------------#
+   [hashtable] $O = @{}                                                             #
+   #                                                                                -----------------------------------
+   if ($SF -eq "")               { WRITE-ERROR "Parameter -SF requried." }          # Prerequisites
+   if (!(TEST-PATH $script:DTF)) { WRITE-ERROR "DB file not found"       }          #
+   #                                                                                -----------------------------------
+   Lv "SeqInit" "Open sequence file [$script:DTF]"                                  # Open sequence file
+   $script:DTS = NEW-OBJECT System.Data.DataSet                                     #
+   $script:DTS.ReadXml($script:DTF)                                                 #
+   #                                                                                -----------------------------------
+   $script:DTS.Tables["STEP"].Rows | % {                                            # Build step list
+      $O = @{}                                                                      #    Create new step
+      $O.Add('STEP_ID'    , $_["STEP_ID"].ToString()     )                          #
+      $O.Add('ENABLED'    , $true                        )                          #
+      $O.Add('TEMPLATE'   , $_["TEMPLATE"].ToString()    )                          #
+      $O.Add('NAME'       , $_["NAME"].ToString()        )                          #
+      $O.Add('DESCRIPTION', $_["DESCRIPTION"].ToString() )                          #
+      $O.Add('ORDER'      , $_["ORDER"].ToString()       )                          #
+      $O.Add('CRITICAL'   , $true                        )                          #    Critical step (exit sequence on error)
+      $O.Add('PROPS'      , @{}                          )                          #    Step properties (input)
+      $O.Add('OUTPUT'     , $null                        )                          #    Step output object
+      $O.Add('RESULT'     , [PSObject[]]@()              )                          #    Step result check object
+      $O.Add('RES_PROPS'  , $_["RES_PROPS"].ToString()   )                          #    Step result check object
+      $O.Add('ERROR'      , [PSObject[]]@()              )                          #    Step errors
+      $script:DTS.Tables["VALUE"].Select("STEP LIKE '$($O['STEP_ID'])'") | % {      #    Set step properties
+         $O['PROPS'].Add($_.NAME, $_.TEXT)                                          #
+      }                                                                             #
+      Lv "SeqInit" "Add step [$($O.NAME)]"                                          #    Add step object to list
+      $script:LST.Add($_["ORDER"].ToString(), (NEW-OBJECT PSObject -Property $O))   #
+   }                                                                                #
+   #                                                                                -----------------------------------
+}
+function SeqStepExec          {
+   #                                                                                -----------------------------------
+   LgStep "Execute step [$($script:STP.NAME)]."                                     #
+   #                                                                                -----------------------------------
+   try    { & "$($script:STP.TEMPLATE)"                              }              # Execute step template function
+   catch  { "! ERROR > A error occurs during this step." | OUT-HOST  }              #
+   #                                                                                -----------------------------------
+   $error | % { $script:STP.ERROR += $_ }                                           # Set step errors
+   $error.Clear()                                                                   #
+   #                                                                                -----------------------------------
+}
+function SeqResultLog         {
+   ##################################################################################
+   ##################################################################################
+   [object]   $O = $null                                                            #
+   [string[]] $P = @()                                                              #
+   [string]   $S = ""                                                               #
+   [string]   $E = ""                                                               #
+   #                                                                                -----------------------------------
+   (" " * 100)                                           | OUT-HOST                 #
+   ("=" * 100)                                           | OUT-HOST                 #
+   " STEPS RESULTS "                                     | OUT-HOST                 #
+   ("=" * 100)                                           | OUT-HOST                 #
+   (" " * 100)                                           | OUT-HOST                 #
+   #                                                                                -----------------------------------
+   $script:LST.GetEnumerator() | SORT -Property Name | %                {           # Process steps list
+      $O = $_.Value                                                                 #
+      if ($O.RES_PROPS -eq "") { $P = @("*")                         }              #
+      else                     { $P = $O.RES_PROPS.Split(',')        }              #
+      "                                            " | OUT-HOST                     #
+      ("-" * 100)                                    | OUT-HOST                     #
+      "STEP [$($O.Name)] $($O.DESCRIPTION)         " | OUT-HOST                     #    Display step name
+      if ($O.RESULT)                                                 {              #    Display step result
+         "                                         " | OUT-HOST                     #
+         "STEP RESULT:                             " | OUT-HOST                     #
+         $O.RESULT | SELECT $P | FT -AutoSize -Wrap  | OUT-HOST      }              #
+      else                                                           {              #
+         "STEP RESULT: No data found.              " | OUT-HOST      }              #
+      if ($O.ERROR)                                                  {              #    Display step error
+         "                                         " | OUT-HOST                     #
+         "STEP ERROR:                              " | OUT-HOST                     #
+         $O.ERROR | %                                             {                 #       Process errors list
+            $E = ""                                                                 #
+            $E += "  $($_.Exception.Message)"                                       #
+            $E += " [$($_.InvocationInfo.ScriptLineNumber)]"                        #
+            $E | OUT-HOST                                         }  }  }           #
+   #                                                                                -----------------------------------
+}
+function SeqResultMD          {
+   #--------------------------------------------------------------------------------#
+   #--------------------------------------------------------------------------------#
+   [string[]] $T = @()                                                              # Text file
+   [string[]] $R = @()                                                              # Result text
+   [string[]] $E = @()                                                              # Error text
+   [string]   $L = ""                                                               # Text line
+   [string]   $H = ""                                                               # Header line
+   [string]   $S = ""                                                               # Generic string
+   [object]   $O = $null                                                            # Generic object
+   [string[]] $P = @()                                                              # Properties list
+   [string]   $F  = "$($script:LOG)\"                                               # File name
+              $F += $SF.ToLower().Replace('.xml', "")                               #
+              $F += (Get-Date -Format "ddMMyyHHmmss") + '.md'                       #   
+   #                                                                                -----------------------------------
+   $T += "#STEPS RESULTS                                                   "        # File header
+   $T += "                                                                 "        #
+   $T += "This file is generated by the execution of a sequence of steps.  "        #
+   $T += "                                                                 "        #
+   $T += "---                                                              "        #
+   $T += "##Sequence execution environment.                                "        #   
+   $T += "                                                                 "        #
+   $T += "| PROPERTY | VALUE                |                              "        #
+   $T += "| ---      | ---                  |                              "        #
+   $T += "| DATE     | $(GET-DATE)          |                              "        #
+   $T += "| COMPUTER | $($env:COMPUTERNAME) |                              "        #
+   $T += "| USER     | $($env:USERNAME)     |                              "        #
+   $T += "| FILE     | $($SF)               |                              "        #
+   $T += "| PATH     | $($script:SPH)       |                              "        #   
+   $T += "                                                                 "        #
+   #                                                                                -----------------------------------
+   $script:LST.GetEnumerator() | SORT -Property Name | %                         {  # Process steps list
+      $O = $_.Value                                                                 #
+      if ($O.RES_PROPS -eq "") { $P = @("*")                   }                    #    Set properties list
+      else                     { $P = $O.RES_PROPS.Split(',')  }                    #
+      $R = @()                                                                      #    Set result text
+      if ($O.RESULT.Count)                                                    {     #       Step with result
+         $O.RESULT | SELECT $P | %                                         {        # 
+            $H = ""                                                                 #
+            $S = ""                                                                 #
+            $L = ""                                                                 #
+            $_.PsObject.Properties | %                                  {           #
+               $H += "| $($_.Name) |"                                               #         Set header
+               $S += "| --- |"                                                      #
+               $L += "| $($_.Value) |"                                  }           #         Add data row
+            $R += $L.Replace('||', '|')                                    }        #
+         $R = @($S.Replace('||', '|')) + $R                                         #
+         $R = @($H.Replace('||', '|')) + $R                                         #
+         $R = @("") + $R                                                            #
+         $R = @("###STEP RESULT:") + $R                                       }     #
+      else                                                                    {     #       No result
+         $R += "###Step returns no data."                                     }     #   
+      $E = @()                                                                      #    Set error text
+      if ($O.ERROR)                                                           {     #       
+         $E += "###STEP ERROR:"                                                     #
+         $E += ""                                                                   #
+         $E += "| MESSAGE | AT  |"                                                  #       Error exists
+         $E += "| ---     | --- |"                                                  #
+         $O.ERROR | %                                                      {        #
+            $L  = "| $($_.Exception.Message) "                                      #
+            $L += "| $($_.InvocationInfo.ScriptLineNumber) |"                       #
+            $E += $L                                                       }  }     #
+      else                                                                    {     #       No error
+         $E += "###Step returns no error."                                    }     #      
+      $T += ""                                                                      #    Set step text
+      $T += "---"                                                                   #
+      $T += "##STEP [$($O.Name)] $($O.DESCRIPTION)"                                 #         
+      $T += ""                                                                      #
+      $T += $R                                                                      #          
+      $T += ""                                                                      #
+      $T += $E                                                                   }  #      
+   #                                                                                -----------------------------------
+   Lv "SeqResultHtml" "Save report file [$F]"                                       # Save file
+   $T | OUT-FILE $F -Force                                                          #
+   #                                                                                -----------------------------------
+}
+function SeqResultHtml        {
+   ##################################################################################
+   # Create HTML check reports document                                             #
+   ##################################################################################
+   [string]   $S  = ""                                                              #
+   [string[]] $P  = @()                                                             #
+   [object]   $O  = $null                                                           #
+   [object]   $R  = $null                                                           #
+   [string]   $H  = ""                                                              #
+   [string]   $F  = "$($script:LOG)\"                                               #
+              $F += $SF.ToLower().Replace('.xml', "")                               #
+              $F += (Get-Date -Format "ddMMyyHHmmss") + '.html'                     #
+   #                                                                                -----------------------------------
+   $H             += "<HTML>                                                  "     # Build HTML report
+   #                                                                                -----------------------------------
+   $H             += "<HEAD>                                                  "     # HTML HEAD
+   $H             += "  <STYLE type=""text/css"">                             "     #
+   $H             += "    TABLE.ENV           {                               "     #
+   $H             += "      height            :     auto ;                    "     #
+   $H             += "      width             :     100% ;                    "     #
+   $H             += "      border-collapse   : collapse ;                    "     #
+   $H             += "      border-style      :    solid ;                    "     #
+   $H             += "      border-width      :      1px ;                    "     #
+   $H             += "      border-color      :    BLACK ;                    "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TD.ENV              {                               "     #
+   $H             += "      padding           :     3px ;                     "     #
+   $H             += "      border-style      :   solid ;                     "     #
+   $H             += "      border-width      :     1px ;                     "     #
+   $H             += "      border-color      :   BLACK ;                     "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TABLE.STP           {                               "     #
+   $H             += "      height            :    auto ;                     "     #
+   $H             += "      width             :    100% ;                     "     #
+   $H             += "      border-collapse   : collapse ;                    "     #
+   $H             += "      border-style      :   solid ;                     "     #
+   $H             += "      border-width      :     1px ;                     "     #
+   $H             += "      border-color      :   BLACK ;                     "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TD.STP              {                               "     #
+   $H             += "      padding           :     5px ;                     "     #
+   $H             += "      border-style      :   solid ;                     "     #
+   $H             += "      border-width      :     1px ;                     "     #
+   $H             += "      border-color      :   BLACK ;                     "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TABLE.ERR           {                               "     #
+   $H             += "      width             :      100% ;                   "     #
+   $H             += "      border-collapse   :  collapse ;                   "     #
+   $H             += "      border-style      :     solid ;                   "     #
+   $H             += "      border-width      :       1px ;                   "     #
+   $H             += "      border-color      :      GRAY ;                   "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TH.ERR              {                               "     #
+   $H             += "      padding           :       5px ;                   "     #
+   $H             += "      color             :       RED ;                   "     #
+   $H             += "      border-style      :     solid ;                   "     #
+   $H             += "      border-width      :       1px ;                   "     #
+   $H             += "      border-color      :      GRAY ;                   "     #
+   $H             += "      background-color  : LIGHTGRAY ;                   "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TD.ERR              {                               "     #
+   $H             += "      padding           :       3px ;                   "     #
+   $H             += "      border-style      :     solid ;                   "     #
+   $H             += "      border-width      :       1px ;                   "     #
+   $H             += "      border-color      :      GRAY ;                   "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TABLE.RLT           {                               "     #
+   $H             += "      width             :      100% ;                   "     #
+   $H             += "      border-collapse   :  collapse ;                   "     #
+   $H             += "      border-style      :     solid ;                   "     #
+   $H             += "      border-width      :       1px ;                   "     #
+   $H             += "      border-color      :      GRAY ;                   "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TH.RLT              {                               "     #
+   $H             += "      padding           :       5px ;                   "     #
+   $H             += "      border-style      :     solid ;                   "     #
+   $H             += "      border-width      :       1px ;                   "     #
+   $H             += "      border-color      :      GRAY ;                   "     #
+   $H             += "      background-color  : LIGHTGRAY ;                   "     #
+   $H             += "    }                                                   "     #
+   $H             += "    TD.RLT              {                               "     #
+   $H             += "      padding           :       5px ;                   "     #
+   $H             += "      border-style      :     solid ;                   "     #
+   $H             += "      border-width      :       1px ;                   "     #
+   $H             += "      border-color      :      GRAY ;                   "     #
+   $H             += "    }                                                   "     #
+   $H             += "   </STYLE>                                             "     #
+   $H             += "</HEAD>                                                 "     #
+   #                                                                                -----------------------------------
+   $H             += "<BODY>                                                  "     # Environment
+   $H             += "  <DIV><H4>Process environment:</H4>                    "     #
+   $H             += "    <TABLE Class=""ENV"">                               "     #
+   $H             += "      <TR>                                              "     #
+   $H             += "        <TD Class=""ENV"">DATE</TD>                     "     #
+   $H             += "        <TD Class=""ENV"">$(GET-DATE)</TD>              "     #
+   $H             += "      </TR>                                             "     #
+   $H             += "      <TR>                                              "     #
+   $H             += "        <TD Class=""ENV"">COMPUTER</TD>                 "     #
+   $H             += "        <TD Class=""ENV"">$($env:COMPUTERNAME)</TD>     "     #
+   $H             += "      </TR>                                             "     #
+   $H             += "      <TR>                                              "     #
+   $H             += "        <TD Class=""ENV"">USER</TD>                     "     #
+   $H             += "        <TD Class=""ENV"">$($env:USERNAME)</TD>         "     #
+   $H             += "      </TR>                                             "     #
+   $H             += "      <TR>                                              "     #
+   $H             += "        <TD Class=""ENV"">FILE</TD>                     "     #
+   $H             += "        <TD Class=""ENV"">$($SF)</TD>                   "     #
+   $H             += "      </TR>                                             "     #
+   $H             += "    </TABLE>                                            "     #
+   $H             += "  </DIV>                                                "     #
+   #                                                                                -----------------------------------
+   $H             += "  <DIV><H4>Steps results:</H4>                          "     # Steps results
+   $H             += "  <TABLE Class=""STP"">                                 "     #    Table steps
+   $script:LST.GetEnumerator() | SORT -Property Name | %                         {  #    Process steps
+      $O = $_.Value                                                                 #
+      $H          += "    <TR>                                                "     #
+      $H          += "    <TD Class=""STP"">$($O.DESCRIPTION)</TD>            "     #
+      $H          += "    <TD Class=""STP"">                                  "     #
+      if ($O.ERROR)                                                              {  #       Display error
+         $H       += "      <TABLE Class=""ERR"">                             "     #
+         $H       += "        <TR>                                            "     #
+         $H       += "          <TH Class=""ERR"">ERROR MESSAGE</TH>          "     #
+         #$H       += "          <TH Class=""ERR"">REASON</TH>                 "     #
+         $H       += "          <TH Class=""ERR"">LINE</TH>                   "     #
+         $H       += "        </TR>                                           "     #
+         $O.ERROR | %                                                            {  #       Display step error
+            $H    += "        <TR>                                            "     #
+            $H    += "          <TD Class=""ERR"">$($_.Exception.Message)</TD>"     #
+            #$S = $_.CategoryInfo.Reason                                             #
+            #$H    += "          <TD Class=""ERR"">$S</TD>                     "     #
+            $S = $_.InvocationInfo.ScriptLineNumber                                 #
+            $H    += "          <TD Class=""ERR"">$S</TD>                     "     #
+            $H    += "        </TR>                                           "  }  #
+         $H       += "      </TABLE>                                          "  }  #
+      elseif ($O.RESULT.Count)                                                   {  #       Display results objects
+         if ($O.RES_PROPS -eq "")         { $P = @("*")                  }          #
+         else                             { $P = $O.RES_PROPS.Split(',') }          #
+         $H       += "      <TABLE Class=""RLT"">                             "     #
+         $H       += "        <TR>                                            "     #
+         ($O.RESULT[0] | SELECT $P).PsObject.Properties | %                      {  #
+            $H    += "          <TH Class=""RLT"">$($_.Name)</TH>             "  }  #
+         $H       += "        </TR>                                           "     #
+         $O.RESULT | SELECT $P | %                                               {  #
+            $H    += "        <TR>                                            "     #
+            $_.PSObject.Properties | %                                           {  #
+               $H += "          <TD Class=""RLT"">$($_.Value)</TD>            "  }  #
+            $H    += "        </TR>                                           "  }  #
+         $H       += "      </TABLE>                                          "  }  #
+      else                                                                       {  #       Display no result
+         $H       += "      No results found                                  "  }  #
+      $H          += "    </TD>                                               "     #
+      $H          += "    </TR>                                               "  }  #
+   $H             += "  </TABLE>                                              "     #
+   $H             += "  </DIV>                                                "     #
+   #                                                                                -----------------------------------
+   $H             += "</BODY>"                                                      # End of html document
+   $H             += "</HTML>"                                                      #
+   #                                                                                -----------------------------------
+   Lv "SeqResultHtml" "Save report file [$F]"                                       # Save file
+   $H | OUT-FILE $F -Force                                                          #
+   #                                                                                -----------------------------------
+   Lv "SeqResultHtml" "Open report"                                                 # Open report
+   #START $F                                                                         #
+   #                                                                                -----------------------------------
+}

@@ -1,0 +1,58 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string] $SCS = $script:STP.PROPS["STEP_CONNECTION"]                                #
+[string] $BCF = $script:STP.PROPS["BACKUP_FILE"]                                    #
+[string] $DBN = $script:STP.PROPS["DB_NAME"]                                        #
+[string] $DTP = $script:STP.PROPS["DATA_PATH"]                                      #
+#                                                                                   -----------------------------------
+[string]                                              $N = ""                       #
+[string]                                              $F = ""                       #
+[Microsoft.SqlServer.Management.Smo.Server]           $S = $script:LST[$SCS].OUTPUT #
+[Microsoft.SqlServer.Management.Smo.BackupDeviceItem] $D = $null                    #
+[Microsoft.SqlServer.Management.Smo.Restore]          $R = $null                    #
+[Microsoft.SqlServer.Management.Smo.RelocateFile]     $L = $null                    #
+#                                                                                   -----------------------------------
+$S.DataBases.Refresh()                                                              # Check if DB exists
+if ($S.DataBases | ? { $_.Name.ToUpper().Contains($DBN.ToUpper()) }) {              #
+   Lv $script:STP.TEMPLATE "A databse named like [$DBN*] already exists."           #
+   ResultAdd @{'STATUS'="A databse named like [$DBN*] already exists."}             #
+   return                                                                           #
+}                                                                                   #
+#                                                                                   -----------------------------------
+$F = $BCF.Replace(".\", "$($script:SPH)\")                                          # Set backup file name
+if (TEST-PATH $F) { $F = (GI $F).FullName                            }              #
+else              { WRITE-ERROR "Backup file not found [$F]"; return }              #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Create restore device from file [$F]"                      # Create BackupDeviceItem object
+$N = 'Microsoft.SqlServer.Management.Smo.BackupDeviceItem'                          #
+$D = NEW-OBJECT $N -ArgumentList $F, "File"                                         #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Create restore object for databse [$DBN]"                  # Create Restore object
+$R = NEW-OBJECT Microsoft.SqlServer.Management.Smo.Restore                          #
+$R.NoRecovery      = $false                                                         #
+$R.ReplaceDatabase = $true                                                          #
+$R.Action          = "Database"                                                     #
+$R.Database        = $DBN                                                           #
+$R.Devices.Add($D)                                                                  #    Set backup device
+#                                                                                   -----------------------------------
+$R.ReadFileList($S) | % {                                                           # Set file location
+   $L = NEW-OBJECT Microsoft.SqlServer.Management.Smo.RelocateFile                  #
+   $L.LogicalFileName = $_.LogicalName                                              #
+   switch ($_.Type)  {                                                              #
+      "D" { $L.PhysicalFileName = "$DTP\$DBN.mdf" }                                 #
+      "L" { $L.PhysicalFileName = "$DTP\$DBN.ldf" }                                 #
+   }                                                                                #
+   Lv $script:STP.TEMPLATE "Set file location [$($L.LogicalFileName)]"              #
+   Lv $script:STP.TEMPLATE "                  [$($L.PhysicalFileName)]"             #
+   $R.RelocateFiles.Add($L)                                                         #
+ }                                                                                  #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Restore DB"                                                # Make restore
+try   { $R.SQLRestore($S)    }                                                      #
+catch {                                                                             #
+   "SMO ERROR:"                            | OUT-HOST                               #
+   $_.Exception.GetBaseException().Message | OUT-HOST                               #
+}                                                                                   #
+#                                                                                   -----------------------------------
+$S.DataBases.Refresh(); $S.DataBases | % { ResultAdd $_ }                           # Set step result "Name,Collation"
+#                                                                                   -----------------------------------

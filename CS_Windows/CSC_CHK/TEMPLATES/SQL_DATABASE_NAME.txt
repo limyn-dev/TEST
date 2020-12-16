@@ -1,0 +1,29 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]                               $I = $script:STP.PROPS["InstanceName"]       #
+[string]                               $N = $script:STP.PROPS["DbName"]             #
+[System.Data.SQLClient.SQLConnection]  $S = $null                                   #
+[System.Data.SQLClient.SQLCommand]     $C = $null                                   #
+[System.Data.DataTable]                $T = $null                                   #
+[string]                               $Q = ""                                      #
+#                                                                                   -----------------------------------
+$Q  = "SELECT name"                                                                 # Build query
+$Q += " FROM sys.databases"                                                         #
+$Q += " WHERE name LIKE '$N'"                                                       #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Connect SQL instance [$I]"                                 # Connect master
+$S = NEW-OBJECT System.Data.SQLClient.SQLConnection                                 #
+$S.ConnectionString = "server='$I';database='master';trusted_connection=true;"      #
+$S.Open()                                                                           #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Get DB list"                                               # Get DB list
+$C = NEW-OBJECT System.Data.SQLClient.SQLCommand                                    #
+$C.Connection  = $S                                                                 #
+$C.CommandText = $Q                                                                 #
+$T = NEW-OBJECT System.Data.DataTable                                               #
+$T.Load($C.ExecuteReader())                                                         #
+$T.Rows | % { ResultAdd @{"NAME"=$_[0]} }                                           #
+#                                                                                   -----------------------------------
+Lv $script:STP.TEMPLATE "Close connection"                                          # Close connection
+$S.Close()                                                                          #
+#                                                                                   -----------------------------------

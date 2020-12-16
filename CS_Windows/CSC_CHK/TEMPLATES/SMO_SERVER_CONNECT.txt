@@ -1,0 +1,41 @@
+#-----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------#
+[string]    $I = $script:STP.PROPS["INSTANCE"]                                      # Instance name
+[string[]]  $A =@()                                                                 # SMO Assemblies list
+            $A += "Microsoft.SqlServer.Management.Common"                           #
+            $A += "Microsoft.SqlServer.Smo"                                         #
+            $A += "Microsoft.SqlServer.Dmf"                                         #
+            $A += "Microsoft.SqlServer.Instapi"                                     #
+            $A += "Microsoft.SqlServer.SqlWmiManagement"                            #
+            $A += "Microsoft.SqlServer.ConnectionInfo"                              #
+            $A += "Microsoft.SqlServer.SmoExtended"                                 #
+            $A += "Microsoft.SqlServer.SqlTDiagM"                                   #
+            $A += "Microsoft.SqlServer.SString"                                     #
+            $A += "Microsoft.SqlServer.Management.RegisteredServers"                #
+            $A += "Microsoft.SqlServer.Management.Sdk.Sfc"                          #
+            $A += "Microsoft.SqlServer.SqlEnum"                                     #
+            $A += "Microsoft.SqlServer.RegSvrEnum"                                  #
+            $A += "Microsoft.SqlServer.WmiEnum"                                     #
+            $A += "Microsoft.SqlServer.ServiceBrokerEnum"                           #
+            $A += "Microsoft.SqlServer.ConnectionInfoExtended"                      #
+            $A += "Microsoft.SqlServer.Management.Collector"                        #
+            $A += "Microsoft.SqlServer.Management.CollectorEnum"                    #
+            $A += "Microsoft.SqlServer.Management.Dac"                              #
+            $A += "Microsoft.SqlServer.Management.DacEnum"                          #
+            $A += "Microsoft.SqlServer.Management.Utility"                          #
+[object[]]  $L = [appdomain]::currentdomain.getassemblies()                         # Loaded assemblies list
+[object]    $S = $null                                                              # SMO server object
+#                                                                                   -----------------------------------
+if (!($L | WHERE { $_.FullName -like "*$($A[1])*" })) {                             # Load assemblies
+   $A | % {                                                                         #
+      Lv $script:STP.TEMPLATE "Load assemblies [$($_)]"                             #
+      [Reflection.Assembly]::LoadWithPartialName($_) | OUT-NULL                     #
+   }                                                                                #
+}                                                                                   #
+#                                                                                   -----------------------------------      
+Lv $script:STP.TEMPLATE "Connect SQL instance [$I]"                                 # Connect server
+$S = New-Object Microsoft.SqlServer.Management.Smo.Server -ArgumentList $I          #
+#                                                                                   -----------------------------------
+$script:STP.OUTPUT = $S                                                             # Set step output
+ResultAdd $S                                                                        #
+#                                                                                   -----------------------------------
