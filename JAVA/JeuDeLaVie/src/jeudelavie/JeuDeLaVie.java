@@ -83,15 +83,12 @@ public class JeuDeLaVie {
       //                                                                            ----------------------------------
       for (int x=0; x < plateau.length; x++) {                                      // Parcourt colonnes
          for (int y=0; y < plateau[x].length; y++) {                                // Parcourt lignes
-            switch(calculNbreDeVoisins(plateau, x, y)){                             // Compte le nombre de voisin
-               case 2:                                                              //    Si 2 pas de changement
-                  break;                                                            //
-               case 3:                                                              //    Si 3 la cellule est vivante
-                  plateau[x][y] = true ;                                            //
-                  break;                                                            //
-               default:                                                             //    Dans les autres cas la cellule est morte
-                  plateau[x][y] = false ;                                           //
-                  break;                                                            //
+            int nbv = calculNbreDeVoisins(plateau, x, y) ;                          //
+            if (plateau[x][y]) {                                                    //
+               if (nbv < 2 || nbv > 3) { plateau[x][y] = false ; }                  //
+            }                                                                       //
+            else {                                                                  //
+               if (nbv == 3) { plateau[x][y] = true ; }                             //
             }                                                                       //
          }                                                                          // 
       }                                                                             //
