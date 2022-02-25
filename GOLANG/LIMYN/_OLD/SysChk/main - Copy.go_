@@ -1,0 +1,72 @@
+package main
+
+import (
+   "bytes"
+   "strings"
+   "strconv"
+   "fmt"
+   "os"
+   "path/filepath" 
+)
+
+var myDIR_LST = make(map[string]string[])
+var myFLE_LST = make(map[string]string[])
+
+func main() {		
+   //                                                                               -----------------------------------   
+   //myDIR_LST := make(map[string]int)
+   //myFLE_LST := make(map[string]int)
+   //                                                                               -----------------------------------
+	PathScan("C:\\Program Files")                                                    // Scan file system
+	PathScan("C:\\ProgramData")                                                      //
+   //                                                                               -----------------------------------   
+   fmt.Println("")
+   fmt.Println("Directories:")
+   fmt.Println(myDIR_LST)
+	//for _, item := range(myDIR_LST) {
+	//	fmt.Println("DIR [", item, "]")
+	//}
+   //                                                                               -----------------------------------
+   fmt.Println("")
+   fmt.Println("Files:")
+   fmt.Println(myFLE_LST)
+	//for _, item := range(myFLE_LST) {
+	//	fmt.Println("FILE [", item, "]")
+	//}
+   //                                                                               -----------------------------------   
+}
+
+var CallBackWalkFunc = func (path string, f os.FileInfo, err error) error {
+   var oBuf bytes.Buffer
+   var sPth string
+   var tVal string[]
+   var bFnd bool
+   
+   sPth = strings.ToLower(path)
+   
+   if f.IsDir() {
+      tVal, bFnd := myDIR_LST[sPth]
+      if bFnd {
+         oBuf.WriteString(f.Name())      
+         tVal
+      }
+   } else {
+      
+      oBuf.WriteString(f.Name())      
+      oBuf.WriteString(";")      
+      oBuf.WriteString(strconv.FormatInt(f.Size(), 10))      
+      oBuf.WriteString(";")
+      oBuf.WriteString(f.ModTime().String())
+      oBuf.WriteString(";")
+      oBuf.WriteString(path)            
+      myFLE_LST[strings.ToLower(oBuf.String())] = 1
+   }
+	return nil
+}
+
+func PathScan (sPath string) {
+	fmt.Println("Scan path", sPath)
+	var err error  = filepath.Walk(sPath, CallBackWalkFunc)
+	if err != nil { fmt.Println("ERROR durring path scanning") }
+}
+	
