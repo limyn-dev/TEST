@@ -1,8 +1,7 @@
 ECHO off
 
-SET DIR_REF=C:\Users\U10754\OneDrive\_DATA
-SET DIR_CHK=C:\Users\U10754\OneDrive\__
+SET DIR_TO_SCAN=\\nas\2017
 
-powershell.exe -f "%~dp0scripts\Double.ps1" -RP "%DIR_REF%" -CP "%DIR_CHK%"
+powershell.exe -f "%~dp0scripts\Double.ps1" -SF "%DIR_TO_SCAN%"
 
 PAUSE
