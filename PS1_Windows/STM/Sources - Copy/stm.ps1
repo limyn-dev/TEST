@@ -27,7 +27,6 @@ $script:PLIST.Add('WWW'    , "$($script:PROOT)\_WWW"                            
 #                                                                       GUI OBJECTS >----------------------------------
 [object]    $script:CMENU  = $null                                                  #
 [object]    $script:APCTX  = $null                                                  #
-[object]    $script:APSTM  = $null                                                  #
 #                                                                       EXECUTABLES >----------------------------------
 [string]    $script:BRAVE  = """C:\Program Files\BraveSoftware\Brave-Browser"       #
             $script:BRAVE += "\Application\brave.exe"""                             #
@@ -196,14 +195,10 @@ function Menu_Init      {
    [string] $S = ""                                                                 # Generic string
    [object] $O = $null                                                              # Generic object
    #                                                                                -----------------------------------
-   "$($Y) Create Menu.                                               " | OUT-HOST   # Create Icon
+   "$($Y) Create Menu.                                               " | OUT-HOST   # Create menu
    $S = "c:\Windows\explorer.exe"                                                   #
-   if ($script:CMENU -eq $null)  {                                                  #
-      $script:CMENU = New-Object System.Windows.Forms.NotifyIcon  }                 #
-   else                          {                                                  #
-      $script:CMENU.ContextMenu = $null                           }                 #
-   #                                                                                -----------------------------------      
-   $script:CMENU.ContextMenu = New-Object System.Windows.Forms.ContextMenu          # Create menu
+   $script:CMENU             = New-Object System.Windows.Forms.NotifyIcon           #
+   $script:CMENU.ContextMenu = New-Object System.Windows.Forms.ContextMenu          #
    $script:CMENU.Text        = "WPF Systray tool"                                   #
    $script:CMENU.Icon        = [System.Drawing.Icon]::ExtractAssociatedIcon($S)     #
    $script:CMENU.Visible     = $true                                                #
@@ -223,9 +218,6 @@ function Menu_Init      {
          Menu_Load_Dir $O.MenuItems (GI $script:PLIST[$S])                          #
       }                                                                             #
    }                                                                                #
-   #                                                                                -----------------------------------   
-   $S = '*Reload*'                                                                  # Add reset action
-   Menu_Add_Item $script:CMENU.contextMenu.MenuItems $S "Menu_Init" ([ref]$O)       #
    #                                                                                -----------------------------------
 }
 #
@@ -237,7 +229,6 @@ Menu_Init                                                                       
 #                                                                                   -----------------------------------
 "Start application                                                    " | OUT-HOST  # Start application
 $script:APCTX = New-Object System.Windows.Forms.ApplicationContext                  #
-$script:APSTM = [System.Windows.Forms.Application]::Run($script:APCTX)              #
-$script:APCTX | GM
+[System.Windows.Forms.Application]::Run($script:APCTX)                              #
 #                                                                                   -----------------------------------
 #endregion
